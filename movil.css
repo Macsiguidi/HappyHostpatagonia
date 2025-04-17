@@ -396,25 +396,30 @@
   }
   @media (max-width: 768px) {
     .carrusel-comentarios {
-      position: relative;
-      min-height: 200px;
-      padding: 20px;
-      box-sizing: border-box;
+      display: flex;
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
     }
   
     .comentario {
-      background-color: #e6f0ff;
-      border-radius: 12px;
-      padding: 20px;
-      font-size: 16px;
-      font-style: italic;
-      line-height: 1.5;
-      position: relative;
+      flex: 0 0 100%;
+      scroll-snap-align: center;
       box-sizing: border-box;
-      min-height: 180px;
+      margin: 0;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #e6f0ff;
+      font-size: 16px;
+      line-height: 1.5;
+      font-style: italic;
+      position: relative;
+      min-height: 200px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
     }
   
     .comentario-logo {
@@ -424,6 +429,7 @@
       bottom: 12px;
       right: 12px;
     }
+  }
   
     /* Para evitar que se corte texto en iOS */
     .comentario p {
