@@ -465,6 +465,7 @@
     #form-busqueda input::placeholder,
     .flatpickr-input::placeholder {
       color: #888 !important;
+      opacity: 1;
       font-family: 'Poppins', sans-serif !important;
     }
   }
