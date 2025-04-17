@@ -50,21 +50,7 @@
   </form>
 </section>
 
-<!-- Script para redirigir con datos -->
-<script>
-  document.getElementById("form-busqueda").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    const checkin = document.getElementById("checkin").value;
-    const checkout = document.getElementById("checkout").value;
-    const huespedes = document.getElementById("huespedes").value;
-
-    if (checkin && checkout && huespedes) {
-      const url = `alojamiento.html?checkin=${checkin}&checkout=${checkout}&huespedes=${huespedes}`;
-      window.location.href = url;
-    }
-  });
-</script>
 
 
   <section class="presentacion" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1000px; margin: auto; padding: 20px;">
@@ -307,5 +293,20 @@
     });
   });
  </script>
+ <!-- Script para redirigir con datos -->
+<script>
+  document.getElementById("form-busqueda").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const checkin = document.getElementById("checkin").value;
+    const checkout = document.getElementById("checkout").value;
+    const huespedes = document.getElementById("huespedes").value;
+
+    if (checkin && checkout && huespedes) {
+      const url = `alojamiento.html?checkin=${checkin}&checkout=${checkout}&huespedes=${huespedes}`;
+      window.location.href = url;
+    }
+  });
+</script>
 </body>
 </html>
