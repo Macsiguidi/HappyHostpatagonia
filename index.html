@@ -254,21 +254,36 @@
     document.addEventListener("DOMContentLoaded", () => {
       const comentarios = document.querySelectorAll('.comentario');
       let indice = 0;
-      const cantidadPorGrupo = window.innerWidth <= 768 ? 1 : 3;
+  
+      // función para determinar cuántos mostrar según el ancho de pantalla
+      function cantidadVisible() {
+        return window.innerWidth <= 768 ? 1 : 3;
+      }
   
       function mostrarComentarios() {
-        comentarios.forEach(com => com.classList.remove('visible'));
+        comentarios.forEach((com) => {
+          com.classList.remove('visible');
+        });
   
-        for (let i = 0; i < cantidadPorGrupo; i++) {
+        const cantidad = cantidadVisible();
+  
+        for (let i = 0; i < cantidad; i++) {
           const pos = (indice + i) % comentarios.length;
           comentarios[pos].classList.add('visible');
         }
   
-        indice = (indice + cantidadPorGrupo) % comentarios.length;
+        indice = (indice + cantidad) % comentarios.length;
       }
   
       mostrarComentarios();
+  
       setInterval(mostrarComentarios, 5000);
+  
+      // Si se cambia el tamaño de la pantalla, se reinicia el índice y se actualiza
+      window.addEventListener('resize', () => {
+        indice = 0;
+        mostrarComentarios();
+      });
     });
   </script>
   
