@@ -36,10 +36,11 @@
   </div>
 <!-- Motor de reservas -->
 <!-- Buscador personalizado -->
+<!-- MOTOR DE RESERVA -->
 <section class="buscador-principal">
   <form id="form-busqueda">
-    <input type="date" id="checkin" name="checkin" required>
-    <input type="date" id="checkout" name="checkout" required>
+    <input type="text" id="checkin" placeholder="Check-in" required>
+    <input type="text" id="checkout" placeholder="Check-out" required>
     <input type="number" id="huespedes" name="huespedes" placeholder="Huéspedes" min="1" required>
     <button type="submit">Buscar</button>
   </form>
@@ -280,5 +281,19 @@
       });
     });
   </script>
+  <!-- FLATPICKR: CSS + JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- Inicialización -->
+<script>
+  flatpickr("#checkin", {
+    dateFormat: "Y-m-d"
+  });
+
+  flatpickr("#checkout", {
+    dateFormat: "Y-m-d"
+  });
+</script>
 </body>
 </html>
