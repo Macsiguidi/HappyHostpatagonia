@@ -407,6 +407,7 @@
       flex: 0 0 100%;
       padding: 20px;
       border-radius: 12px;
+      display: none;
       background-color: #e6f0ff;
       font-size: 16px;
       font-style: italic;
@@ -424,6 +425,7 @@
       opacity: 1;
       transform: translateX(0%);
       position: relative;
+      display: block;
     }
   
     .comentario-logo {
