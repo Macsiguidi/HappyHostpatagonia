@@ -548,37 +548,32 @@ body {
 }
 
 .comentario {
-  display: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   background-color: #e6f0ff;
   border-radius: 12px;
   padding: 20px;
   box-sizing: border-box;
   font-style: italic;
-  position: absolute;
   text-align: left;
   width: 100%;
   max-width: 600px;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.2;
+  min-height: 120px;
   opacity: 0;
   transition: opacity 0.5s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-    /* Puntos suspensivos */
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  
+  position: absolute;
 }
 
 .comentario.visible {
-  display: block;
-  position: relative;
+  display: -webkit-box;
   opacity: 1;
+  position: relative;
 }
 
 .comentario-logo {
@@ -588,4 +583,3 @@ body {
   width: 24px;
   height: 24px;
 }
-
