@@ -402,29 +402,25 @@
       position: relative;
       min-height: 200px;
     }
-  
-    .comentario {
-      flex: 0 0 100%;
-      padding: 20px;
-      border-radius: 12px;
-      display: none;
-      background-color: #e6f0ff;
-      font-size: 16px;
-      font-style: italic;
-      line-height: 1.5;
-      box-sizing: border-box;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
+
+      .comentario {
+        display: none;
+        width: 100%;
+        background-color: #e6f0ff;
+        padding: 20px;
+        border-radius: 12px;
+        box-sizing: border-box;
+        font-size: 16px;
+        font-style: italic;
+        line-height: 1.5;
+        position: relative;
+        text-align: center;
+        min-height: 180px;
+      }
   
     .comentario.activo {
       opacity: 1;
       transform: translateX(0%);
-      position: relative;
       display: block;
     }
   
