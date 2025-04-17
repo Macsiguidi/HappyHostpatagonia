@@ -436,4 +436,25 @@
       right: 10px;
     }
   }
+  @media (max-width: 768px) {
+    #form-busqueda input[type="text"],
+    #form-busqueda input[type="number"],
+    .flatpickr-input {
+      width: 100%;
+      height: 50px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background-color: white;
+      color: #333;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+      display: block;
+    }
+  
+    #form-busqueda input::placeholder {
+      color: #888;
+    }
+  }
   

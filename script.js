@@ -378,3 +378,14 @@ function cerrarPopup() {
 }
 
 
+// buscador movil
+  flatpickr("#checkin", {
+    dateFormat: "Y-m-d",
+    allowInput: true
+  });
+
+  flatpickr("#checkout", {
+    dateFormat: "Y-m-d",
+    allowInput: true
+  });
+
