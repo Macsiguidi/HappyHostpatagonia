@@ -396,49 +396,46 @@
   }
   @media (max-width: 768px) {
     .carrusel-comentarios {
-      display: flex;
-      overflow: hidden;
-      width: 100%;
       position: relative;
+      width: 100%;
+      overflow: hidden;
       min-height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
-      .comentario {
-        display: none;
-        width: 100%;
-        background-color: #e6f0ff;
-        padding: 20px;
-        border-radius: 12px;
-        box-sizing: border-box;
-        font-size: 16px;
-        font-style: italic;
-        line-height: 1.5;
-        position: relative;
-        text-align: center;
-        min-height: 180px;
-      }
   
-    .comentario.activo {
+    .comentario {
+      display: none !important;
+      width: 100%;
+      padding: 20px;
+      border-radius: 12px;
+      background-color: #e6f0ff;
+      box-sizing: border-box;
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.5;
+      position: relative;
+      text-align: center;
+      min-height: 180px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+  
+    .comentario.visible {
+      display: block !important;
       opacity: 1;
-      transform: translateX(0%);
-      display: block;
     }
   
-    .comentario-logo {
-      width: 24px;
-      height: 24px;
+    .comentario img {
       position: absolute;
       bottom: 12px;
       right: 12px;
+      width: 24px;
+      height: 24px;
     }
   }
   
-  
-    /* Para evitar que se corte texto en iOS */
-    .comentario p {
-      margin: 0;
-      word-break: break-word;
-    }
   
   
   @media (max-width: 768px) {
