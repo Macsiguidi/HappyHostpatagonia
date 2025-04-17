@@ -185,15 +185,13 @@
   </div>
 </section>
 
+
 <section class="comentarios-section">
   <div class="carrusel-comentarios">
     <div class="comentario">“La casa muy bien equipada con cosas de calidad y todo lo necesario para una estadía, divina la decoración y luz natural todo el día 😍..” <img class="comentario-logo" src="imagenes/logo.png" alt="Airbnb"></div>
+    
     <div class="comentario">“100 x 100% recomendable.  Hermoso departamento, moderno. Totalmente equipado.  A 500 mts. de la calle principal.  Un muy buen descanso. Zona super tranquila y segura. Los anfitriones totalmente predispuestos para lo que necesites. Una maravilla toda nuestra estadía.” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
-    <div class="comentario">“El duplex muy bien ubicado , a diez cuadras del centro aproximadamente  , en un lugar tranquilo. Bien equipado con todo lo necesario , camas muy cómodas y ropa blanca en buen estado, la limpieza impecable, sin dudas lo recomiendo” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
-    <div class="comentario">“Todo impecable! Muy destacable la amabilidad de Maxi y Fabio. Frente a cada consulta estuvieron rápidamente disponibles. Entrar a la casa nos hizo muy felices por la limpieza y los regalitos de navidad que nos dejaron.
-      Destacable tambien la pulcritud y el buen aroma en toda la casa.
-      Muy calida!
-      Muy buena ubicación” <img class="comentario-logo" src="imagenes/logo.png"></div>
+    
     <div class="comentario">“Cabaña 5⭐️, perfectamente equipada, ordenada y limpia. Estuvimos muy cómodos con la casa en sí y también con los dueños, que atendieron todas nuestras inquietudes con mucha rapidez y buena predisposición. Recomendadísima🤝…” <img class="comentario-logo" src="imagenes/logo.png"alt=""></div>
     <div class="comentario">“todo perfecto, la cabaña en excelente estado completa y muy comoda,  bien ubicada cerca de la playa las balsas, cerca de de la ciudad, barrio muy tranquilo, sin ruido” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
     <div class="comentario">“Esta es una casa muy espaciosa, cómoda y hermosa, en la que todo está pensado y proporcionado para estancias largas. Tiene su propio jardín con flores, no se pueden ver otras casas y, por lo tanto, está muy aislado. Cocina enorme aislada, muy bien equipada. Hermosa sala con una gran chimenea.” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
@@ -202,7 +200,8 @@
     <div class="comentario">“Todo muy bien! Fuimos de viaje familiar con 2 niños pequeños y la verdad es que la casa era super comoda y full equipada como para ir en familia. La ubicacion es inmejorable, super cerca de playas y del pueblo. Maximiliano nos ayudó con todo lo que necesitamos siempre y super rapido! Volveriamos sin dudas” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
     <div class="comentario">“Buena ubicación, a una cuadra de la avenida principal. Departamento igual a las fotos, muy lindo y limpio. Los anfitriones muy amables, nos recibieron muy bien” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
     <div class="comentario">“El alojamiento cumplió ampliamente con nuestras expectativas. Maxi es un excelente anfitrión. Estuvo siempre atento y respondió a la brevedad nuestros pedidos. La ubicación es perfecta . Muy tranquilo y seguro” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
-    <!-- y así hasta los 12 -->
+    <div class="comentario">“El duplex muy bien ubicado , a diez cuadras del centro aproximadamente  , en un lugar tranquilo. Bien equipado con todo lo necesario , camas muy cómodas y ropa blanca en buen estado, la limpieza impecable, sin dudas lo recomiendo” <img class="comentario-logo" src="imagenes/logo.png" alt=""></div>
+    
   </div>
 </section>
 
@@ -250,42 +249,6 @@
 
   <script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
   <script src="script.js" defer></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const comentarios = document.querySelectorAll('.comentario');
-      let indice = 0;
-  
-      // función para determinar cuántos mostrar según el ancho de pantalla
-      function cantidadVisible() {
-        return window.innerWidth <= 768 ? 1 : 3;
-      }
-  
-      function mostrarComentarios() {
-        comentarios.forEach((com) => {
-          com.classList.remove('visible');
-        });
-  
-        const cantidad = cantidadVisible();
-  
-        for (let i = 0; i < cantidad; i++) {
-          const pos = (indice + i) % comentarios.length;
-          comentarios[pos].classList.add('visible');
-        }
-  
-        indice = (indice + cantidad) % comentarios.length;
-      }
-  
-      mostrarComentarios();
-  
-      setInterval(mostrarComentarios, 5000);
-  
-      // Si se cambia el tamaño de la pantalla, se reinicia el índice y se actualiza
-      window.addEventListener('resize', () => {
-        indice = 0;
-        mostrarComentarios();
-      });
-    });
-  </script>
   
   <script>
     document.querySelectorAll('input[type="date"]').forEach(input => {
@@ -294,6 +257,40 @@
       });
     });
   </script>
+<!-- comentarios -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const comentarios = document.querySelectorAll(".comentario");
+    let indice = 0;
+
+    function cantidadVisible() {
+      return window.innerWidth <= 768 ? 1 : 3;
+    }
+
+    function mostrarComentarios() {
+      comentarios.forEach(com => com.classList.remove("visible"));
+
+      const cantidad = cantidadVisible();
+
+      for (let i = 0; i < cantidad; i++) {
+        const pos = (indice + i) % comentarios.length;
+        comentarios[pos].classList.add("visible");
+      }
+
+      indice = (indice + cantidad) % comentarios.length;
+    }
+
+    mostrarComentarios();
+    setInterval(mostrarComentarios, 5000);
+
+    window.addEventListener('resize', () => {
+      indice = 0;
+      mostrarComentarios();
+    });
+  });
+</script>
+
+
 <!-- Inicialización corregida -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>

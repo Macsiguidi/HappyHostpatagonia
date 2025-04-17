@@ -381,11 +381,13 @@ function cerrarPopup() {
 // buscador movil
   flatpickr("#checkin", {
     dateFormat: "Y-m-d",
-    allowInput: true
+    allowInput: true,
+    defaultDate: null
   });
 
   flatpickr("#checkout", {
     dateFormat: "Y-m-d",
-    allowInput: true
+    allowInput: true,
+    defaultDate: null
   });
 

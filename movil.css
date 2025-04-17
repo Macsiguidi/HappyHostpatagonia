@@ -396,51 +396,16 @@
   }
 
   @media (max-width: 768px) {
-    .comentarios-section {
-      padding: 20px;
-    }
-  
-    .carrusel-comentarios {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      min-height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
     .comentario {
-      display: none;
-      width: 100%;
-      padding: 20px;
-      border-radius: 12px;
-      background-color: #e6f0ff;
-      font-size: 16px;
-      font-style: italic;
-      line-height: 1.5;
-      box-sizing: border-box;
-      position: absolute;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      text-align: left;
-    }
-  
-    .comentario.visible {
-      display: block;
-      position: relative;
-      opacity: 1;
+      font-size: 15px;
+      padding: 16px;
     }
   
     .comentario-logo {
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      bottom: 12px;
-      right: 12px;
+      width: 20px;
+      height: 20px;
     }
   }
-  
   
   
   @media (max-width: 768px) {

@@ -537,3 +537,55 @@ body {
   }
 }
 
+.carrusel-comentarios {
+  position: relative;
+  width: 100%;
+  min-height: 180px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comentario {
+  display: none;
+  background-color: #e6f0ff;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-style: italic;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+    /* Puntos suspensivos */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  
+}
+
+.comentario.visible {
+  display: block;
+  position: relative;
+  opacity: 1;
+}
+
+.comentario-logo {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
