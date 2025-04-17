@@ -511,6 +511,11 @@ body {
   color: #888;
 }
 
+@media (min-width: 769px) {
+  .supertexto-header {
+    display: none;
+  }
+}
 
 @keyframes aparecer {
   from {

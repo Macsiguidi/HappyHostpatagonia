@@ -251,27 +251,27 @@
   <script src="https://app.lodgify.com/portable-search-bar/stable/renderPortableSearchBar.js" defer></script>
   <script src="script.js" defer></script>
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const comentarios = document.querySelectorAll('.comentario');
-  let indice = 0;
-  const cantidadPorGrupo = window.innerWidth <= 768 ? 1 : 3;
-
-  function mostrarComentarios() {
-    comentarios.forEach(com => com.style.display = 'none');
-
-    for (let i = 0; i < cantidadPorGrupo; i++) {
-      const pos = (indice + i) % comentarios.length;
-      comentarios[pos].style.display = 'block';
-    }
-
-    indice = (indice + cantidadPorGrupo) % comentarios.length;
-  }
-
-  mostrarComentarios();
-  setInterval(mostrarComentarios, 5000);
-});
-
+    document.addEventListener("DOMContentLoaded", () => {
+      const comentarios = document.querySelectorAll('.comentario');
+      let indice = 0;
+      const cantidadPorGrupo = window.innerWidth <= 768 ? 1 : 3;
+  
+      function mostrarComentarios() {
+        comentarios.forEach(com => com.classList.remove('visible'));
+  
+        for (let i = 0; i < cantidadPorGrupo; i++) {
+          const pos = (indice + i) % comentarios.length;
+          comentarios[pos].classList.add('visible');
+        }
+  
+        indice = (indice + cantidadPorGrupo) % comentarios.length;
+      }
+  
+      mostrarComentarios();
+      setInterval(mostrarComentarios, 5000);
+    });
   </script>
+  
   <script>
     document.querySelectorAll('input[type="date"]').forEach(input => {
       input.addEventListener('click', () => {
