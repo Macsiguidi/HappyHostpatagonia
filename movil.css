@@ -142,46 +142,42 @@
     }
 
 /* motor de reserva*/
-/* === RESPONSIVE === */
-.buscador-principal {
-  padding: 20px;
-}
+/* === VISTA MÓVIL === */
+  .buscador-principal {
+    padding: 16px;
+  }
 
-#form-busqueda {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: white;
-  width: 100%;
-  box-sizing: border-box;
-}
+  #form-busqueda {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 20px;
+  }
 
-#form-busqueda input,
-#form-busqueda button {
-  width: 100%;
-  font-size: 16px;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  color: #333;
-  font-family: inherit;
-  background-color: #fff;
-}
+  #form-busqueda input[type="text"],
+  #form-busqueda input[type="number"],
+  #form-busqueda button {
+    min-width: 100%;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
 
-#form-busqueda input::placeholder {
-  color: #888;
-}
+  .huespedes-input {
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 100%;
+    padding: 10px 14px;
+  }
 
-#form-busqueda button {
-  background-color: #25D366;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
+  #form-busqueda button[type="submit"] {
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 50px;
+  }
+
+
 
 
     .presentacion p {
