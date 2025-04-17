@@ -461,5 +461,28 @@
       font-family: 'Poppins', sans-serif !important;
     }
   }
+  @media (max-width: 768px) {
+    input.flatpickr-input {
+      all: unset; /* borra todo lo que le mete iOS por defecto */
+      width: 100% !important;
+      height: 50px !important;
+      padding: 14px 18px !important;
+      border-radius: 12px !important;
+      border: 1px solid #ccc !important;
+      background-color: white !important;
+      color: #333 !important;
+      font-size: 16px !important;
+      font-family: 'Poppins', sans-serif !important;
+      box-sizing: border-box !important;
+      display: block !important;
+      appearance: none !important;
+      -webkit-appearance: none !important;
+    }
+  
+    input.flatpickr-input::placeholder {
+      color: #888 !important;
+      font-family: 'Poppins', sans-serif !important;
+    }
+  }
   
   
