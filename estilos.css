@@ -123,22 +123,25 @@ body {
 
 /* === CAMPOS DE FECHA Y HUÉSPEDES === */
 #form-busqueda input[type="text"],
-#form-busqueda input[type="number"] {
-  padding: 12px 16px;
+#form-busqueda input[type="number"],
+.flatpickr-input {
+  width: 100%;
+  font-size: 16px;
+  padding: 14px 18px;
   border-radius: 12px;
   border: 1px solid #ccc;
-  font-size: 16px;
-  min-width: 180px;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
   background-color: white;
-  transition: border-color 0.3s;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  height: 50px;
+  display: block;
 }
 
 #form-busqueda input::placeholder {
   color: #888;
 }
+
 
 #form-busqueda input:focus {
   border-color: #25D366;
