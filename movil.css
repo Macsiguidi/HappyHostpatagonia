@@ -394,48 +394,44 @@
       border-radius: 6px;
     }
   }
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     .carrusel-comentarios {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      overflow: hidden;
-      flex-wrap: nowrap;
-      gap: 16px;
-      padding: 0 10px;
-      max-width: 100%;
+      position: relative;
+      min-height: 200px;
+      padding: 20px;
+      box-sizing: border-box;
     }
   
-    .carrusel-comentarios .comentario {
-      min-width: 90vw;
-      max-width: 90vw;
-      background-color: white;
+    .comentario {
+      background-color: #e6f0ff;
+      border-radius: 12px;
       padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      position: relative;
+      font-size: 16px;
       font-style: italic;
+      line-height: 1.5;
+      position: relative;
+      box-sizing: border-box;
+      min-height: 180px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      text-align: center;
-  
-      /* Evitar cortes */
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      white-space: normal;
-      line-height: 1.4;
-      font-size: 0.95em;
+      justify-content: space-between;
     }
   
-    .carrusel-comentarios .comentario img {
-      width: 20px;
-      height: auto;
+    .comentario-logo {
+      width: 24px;
+      height: 24px;
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 12px;
+      right: 12px;
+    }
+  
+    /* Para evitar que se corte texto en iOS */
+    .comentario p {
+      margin: 0;
+      word-break: break-word;
     }
   }
+  
   @media (max-width: 768px) {
     /* Uniformamos TODOS los campos */
     #form-busqueda input[type="text"],
