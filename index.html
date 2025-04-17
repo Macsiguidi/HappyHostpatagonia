@@ -7,10 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <!-- Estilos generales de escritorio -->
 <link rel="stylesheet" href="estilos.css">
+<!-- Estilo de Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
 <!-- Estilos solo para pantallas menores a 768px -->
 <link rel="stylesheet" href="movil.css" media="only screen and (max-width: 768px)">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -281,19 +285,27 @@
       });
     });
   </script>
-  <!-- FLATPICKR: CSS + JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Inicialización corregida -->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
 
-<!-- Inicialización -->
-<script>
-  flatpickr("#checkin", {
-    dateFormat: "Y-m-d"
-  });
+    const checkin = flatpickr(checkinInput, {
+      dateFormat: "Y-m-d",
+      placeholder: "Check-in",
+      onChange: function (selectedDates, dateStr) {
+        checkout.set('minDate', dateStr);
+      }
+    });
 
-  flatpickr("#checkout", {
-    dateFormat: "Y-m-d"
+    const checkout = flatpickr(checkoutInput, {
+      dateFormat: "Y-m-d",
+      placeholder: "Check-out",
+      minDate: new Date()
+    });
   });
-</script>
+ </script>
 </body>
 </html>
