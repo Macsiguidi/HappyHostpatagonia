@@ -394,11 +394,16 @@
       border-radius: 6px;
     }
   }
+
   @media (max-width: 768px) {
+    .comentarios-section {
+      padding: 20px;
+    }
+  
     .carrusel-comentarios {
       position: relative;
-      width: 100%;
       overflow: hidden;
+      width: 100%;
       min-height: 200px;
       display: flex;
       justify-content: center;
@@ -406,33 +411,33 @@
     }
   
     .comentario {
-      display: none !important;
+      display: none;
       width: 100%;
       padding: 20px;
       border-radius: 12px;
       background-color: #e6f0ff;
-      box-sizing: border-box;
       font-size: 16px;
       font-style: italic;
       line-height: 1.5;
-      position: relative;
-      text-align: center;
-      min-height: 180px;
+      box-sizing: border-box;
+      position: absolute;
       opacity: 0;
       transition: opacity 0.4s ease;
+      text-align: left;
     }
   
     .comentario.visible {
-      display: block !important;
+      display: block;
+      position: relative;
       opacity: 1;
     }
   
-    .comentario img {
+    .comentario-logo {
+      width: 24px;
+      height: 24px;
       position: absolute;
       bottom: 12px;
       right: 12px;
-      width: 24px;
-      height: 24px;
     }
   }
   
