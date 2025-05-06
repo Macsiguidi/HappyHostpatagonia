@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmar Reserva - Happy Host</title>
+  <link rel="stylesheet" href="formulario.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="barra-menu">
+          <div class="logo">
+            <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo Happy Host" href="index.html">
+          </div>
+    
+          <h1 class="titulo-header">Nombre de Alojamiento</h1>
+
+          <div class="volver">
+            <a href="alojamientos.html" class="boton-volver">← Volver a alojamientos</a>
+          </div>
+        </div>
+      </header>
+
+  <div class="container">
+
+    <div class="formulario-reserva">
+      <h2>Datos de contacto</h2>
+      <form id="formularioReserva">
+
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="comentarios">Comentarios (opcional)</label>
+        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe aquí si necesitas algo extra..."></textarea>
+
+        <div class="terminos">
+          <input type="checkbox" id="aceptaTerminos" required>
+          <label for="aceptaTerminos">Acepto los <a href="#" id="verTerminos">Términos y Condiciones</a></label>
+        </div>
+
+        <!-- Inputs ocultos para Property y Room -->
+        <input type="hidden" id="propertyId" name="propertyId">
+        <input type="hidden" id="roomTypeId" name="roomTypeId">
+        <input type="hidden" id="checkInDate" name="checkInDate">
+        <input type="hidden" id="checkOutDate" name="checkOutDate">
+        <input type="hidden" id="numberOfGuests" name="numberOfGuests">
+        <input type="hidden" id="totalPrice" name="totalPrice">
+
+        <button type="submit" id="botonReservar">Confirmar Reserva</button>
+
+      </form>
+    </div>
+
+    <div class="resumen-reserva">
+      <h2>Resumen de la reserva</h2>
+
+      <div class="info-reserva">
+        <img id="imagenPropiedad" src="" alt="Imagen de la propiedad">
+        <h3 id="nombrePropiedad">Nombre Propiedad</h3>
+
+        <p><strong>Fechas:</strong> <span id="fechasReserva"></span></p>
+        <p><strong>Huéspedes:</strong> <span id="huespedesReserva"></span></p>
+        <p><strong>Total:</strong> <span id="precioReserva"></span></p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="formulario.js"></script>
+
+</body>
+</html>
+

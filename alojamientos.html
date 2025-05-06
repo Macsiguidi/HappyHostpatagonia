@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Host Patagonia</title>
+  <link rel="stylesheet" href="alojamientos.css">
+  <link rel="icon" type="image/png" href="logo/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="hero-inicio">
+    <nav class="menu-principal">
+       <!-- Logo móvil, inicialmente oculto -->
+      <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Happy Host" class="mobile-logo">
+      <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+      <ul>
+        <li><a href="index.html"><strong>INICIO</strong></a></li>
+        <li><a href="alojamientos.html"><strong>ALOJAMIENTOS</strong></a></li>
+        <li><img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo" class="logo-centrado"></li>
+        <li><a href="propietarios.html"><strong>PROPIETARIOS</strong></a></li>
+        <li><a href="https://wa.me/5492944700773" target="_blank"><strong>CONTACTO</strong></a></li>
+
+      </ul>
+    </nav>
+</header>
+
+<div id="loading-disponibilidad" class="pantalla-carga">
+  <div class="spinner"></div>
+  <p>Buscando disponibilidad...</p>
+</div>
+
+
+<div class="grid-alojamientos" id="contenedor-alojamientos" style="display: none;">
+
+  <div class="card" data-nombre="calafate1">
+    <div class="carousel">
+      <img src="propiedades/casa1/casa1_img1.jpg" class="slide active" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img2.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img3.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img4.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img5.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img6.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img7.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img8.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img9.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img10.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img11.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img12.jpg" class="slide" alt="Calafate 1">
+      <img src="propiedades/casa1/casa1_img13.jpg" class="slide" alt="Calafate 1">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 1</h3>
+
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate1.html')">Ver más</a>
+  </div>
+
+  <div class="card" data-nombre="cruzdelsur5">
+    <div class="carousel">
+      <img src="propiedades/cds5/cds5_2.jpg" class="slide active" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_3.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_4.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_5.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_6.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_7.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_8.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_9.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_10.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_11.jpg" class="slide" alt="Cruz del Sur 5">
+      <img src="propiedades/cds5/cds5_1.jpg" class="slide" alt="Cruz del Sur 5">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Cruz del Sur 5</h3>
+
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('cruz5.html')">Ver más</a>
+  </div>
+
+
+  <div class="card" data-nombre="nilidas">
+    <div class="carousel">
+      <img src="propiedades/nilidas/nilidas1.jpg" class="slide active" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas2.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas3.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas4.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas5.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas6.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas7.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas8.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas9.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas10.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas11.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas12.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas13.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas14.jpg" class="slide" alt="Las Nílidas">
+      <img src="propiedades/nilidas/nilidas15.jpg" class="slide" alt="Las Nílidas">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Las Nílidas</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('nilidas.html')">Ver más</a>
+  </div>
+
+
+
+  <div class="card" data-nombre="gurisa">
+    <div class="carousel">
+      <img src="propiedades/gurisa/gurisa2.jpg" class="slide active" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa3.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa4.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa5.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa6.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa7.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa8.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa9.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa10.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa11.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa12.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa13.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa14.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa15.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa1.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa16.jpg" class="slide" alt="Gurisa">
+      <img src="propiedades/gurisa/gurisa17.jpg" class="slide" alt="Gurisa">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Gurisa</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('gurisa.html')">Ver más</a>
+  </div>
+
+
+
+  <div class="card" data-nombre="paisajismo">
+    <div class="carousel">
+      <img src="propiedades/paisajismo/paisajismo1.jpg" class="slide active" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo2.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo3.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo4.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo5.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo6.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo7.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo8.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo9.jpg" class="slide" alt="Paisajismo">
+      <img src="propiedades/paisajismo/paisajismo10.jpg" class="slide" alt="Paisajismo">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Paisajismo</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('paisajismo.html')">Ver más</a>
+  </div>
+
+
+
+  <div class="card" data-nombre="calafate2">
+    <div class="carousel">
+      <img src="propiedades/casa2/casa2_img3.jpg" class="slide active" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img2.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img1.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img4.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img5.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img6.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img7.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img8.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img9.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img10.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casa2_img11.jpg" class="slide" alt="Calafate 2">
+      <img src="propiedades/casa2/casascalafate.jpg" class="slide" alt="Calafate 2">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 2</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate2.html')">Ver más</a>
+  </div>
+
+  <div class="card" data-nombre="calafate7">
+    <div class="carousel">
+      <img src="propiedades/casa7/casa7_img1.jpg" class="slide active" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img2.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img3.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img4.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img5.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img6.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img7.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img8.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img9.jpg" class="slide" alt="Calafate 7">
+      <img src="propiedades/casa7/casa7_img10.jpg" class="slide" alt="Calafate 7">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 7</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate7.html')">Ver más</a>
+
+
+  </div>
+
+
+
+  <div class="card" data-nombre="calafate3">
+    <div class="carousel">
+      <img src="propiedades/casa3/casa3_img1.jpg" class="slide active" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img2.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img3.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img4.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img5.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img6.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img7.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img8.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img9.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img10.jpg" class="slide" alt="Calafate 3">
+      <img src="propiedades/casa3/casa3_img11.jpg" class="slide" alt="Calafate 3">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 3</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate3.html')">Ver más</a>
+  </div>
+
+  <div class="card" data-nombre="cruzdelsur4">
+    <div class="carousel">
+      <img src="propiedades/cds4/cds4_1.jpg" class="slide active" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_2.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_3.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_4.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_5.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_6.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_7.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_8.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_9.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_10.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_11.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_12.jpg" class="slide" alt="Cruz del Sur 4">
+      <img src="propiedades/cds4/cds4_13.jpg" class="slide" alt="Cruz del Sur 4">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Cruz del Sur 4</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('cruz4.html')">Ver más</a>
+  </div>
+
+
+  <div class="card" data-nombre="calafate4">
+    <div class="carousel">
+      <img src="propiedades/casa4/casa4_img2.jpg" class="slide active" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img1.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img3.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img4.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img5.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img6.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img7.jpg" class="slide" alt="Calafate 4">
+      <img src="propiedades/casa4/casa4_img8.jpg" class="slide" alt="Calafate 4">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 4</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate4.html')">Ver más</a>
+  </div>
+
+
+  <div class="card" data-nombre="calafate5">
+    <div class="carousel">
+      <img src="propiedades/casa5/casa5_img4.jpg" class="slide active" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img2.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img3.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img1.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img5.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img6.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img7.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img8.jpg" class="slide" alt="Calafate 5">
+      <img src="propiedades/casa5/casa5_img9.jpg" class="slide" alt="Calafate 5">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 5</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate5.html')">Ver más</a>
+  </div>
+
+
+  <div class="card" data-nombre="calafate6">
+    <div class="carousel">
+      <img src="propiedades/casa6/casa6_img1.jpg" class="slide active" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img2.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img3.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img4.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img5.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img6.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img7.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img8.jpg" class="slide" alt="Calafate 6">
+      <img src="propiedades/casa6/casa6_img9.jpg" class="slide" alt="Calafate 6">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+    <h3>Calafate 6</h3>
+    <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate6.html')">Ver más</a>
+  </div>
+</div>
+
+
+  <footer class="footer">
+    <div class="footer-content">
+  
+      <div class="footer-logo">
+        <img src="logo/logo.png" alt="Happy Host Patagonia" />
+      </div>
+  
+      <div class="footer-info">
+        <p>Villa La Angostura, Neuquén, Patagonia Argentina</p>
+        <p>contacto@happyhostpatagonia.com</p>
+      </div>
+  
+      <div class="footer-redes">
+        <a href="https://www.instagram.com/hhpatagonia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+          <img src="logo/instagram.png" alt="Instagram" class="icono-footer" />
+        </a>
+        <a href="https://wa.me/5492944700773" target="_blank">
+          <img src="logo/whatsapp.png" alt="WhatsApp" class="icono-footer" />
+        </a>
+        <a href="https://x.com/hhpatagonia?s=21&t=UH7im4Y6WJT3722TpA05Iw" target="_blank">
+          <img src="logo/twitter.png" alt="Twitter" class="icono-footer" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script> document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll('.card');
+  
+    cards.forEach(card => {
+      const slides = card.querySelectorAll('.carousel .slide');
+      const prevBtn = card.querySelector('.prev');
+      const nextBtn = card.querySelector('.next');
+  
+      if (!slides.length || !prevBtn || !nextBtn) return;
+  
+      // Seteo de índice inicial en data
+      card.dataset.currentIndex = "0";
+  
+      const showSlide = (index) => {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      };
+  
+      prevBtn.addEventListener('click', () => {
+        let current = parseInt(card.dataset.currentIndex);
+        current = (current - 1 + slides.length) % slides.length;
+        card.dataset.currentIndex = current.toString();
+        showSlide(current);
+      });
+  
+      nextBtn.addEventListener('click', () => {
+        let current = parseInt(card.dataset.currentIndex);
+        current = (current + 1) % slides.length;
+        card.dataset.currentIndex = current.toString();
+        showSlide(current);
+      });
+  
+      showSlide(0);
+    });
+  });
+  
+   
+</script>  
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const checkin = localStorage.getItem('checkin');
+    const checkout = localStorage.getItem('checkout');
+    const loading = document.getElementById('loading-disponibilidad');
+    const contenedor = document.getElementById('contenedor-alojamientos');
+    const cards = document.querySelectorAll('.card[data-nombre]');
+
+    if (!checkin || !checkout) {
+      // Si no hay fechas, mostramos todo y ocultamos cartel
+      loading.style.display = 'none';
+      contenedor.style.display = 'flex';
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/disponibles?checkin=${checkin}&checkout=${checkout}`);
+      const data = await res.json();
+      const disponibles = data.disponibles || [];
+
+      cards.forEach(card => {
+        const nombre = card.getAttribute('data-nombre');
+        card.style.display = disponibles.includes(nombre) ? 'block' : 'none';
+      });
+
+    } catch (err) {
+      console.error('❌ Error al consultar disponibilidad:', err.message);
+    } finally {
+      // Ocultamos cartel y mostramos tarjetas
+      loading.style.display = 'none';
+      contenedor.style.display = 'flex';
+
+    
+    }
+  });
+</script>
+
+
+<script>
+  // Mostrar/ocultar menú hamburguesa
+  const toggleBtn = document.querySelector(".menu-toggle");
+const menuList = document.querySelector(".menu-principal ul");
+
+toggleBtn.addEventListener("click", () => {
+  menuList.classList.toggle("open");
+});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const checkin    = localStorage.getItem('checkin');
+    const checkout   = localStorage.getItem('checkout');
+    const huespedes  = localStorage.getItem('huespedes');
+    const loading    = document.getElementById('loading-disponibilidad');
+    const contenedor = document.getElementById('contenedor-alojamientos');
+    const cards      = document.querySelectorAll('.card[data-nombre]');
+    const resultados = document.getElementById('resultados-busqueda');
+
+    if (checkin && checkout && huespedes) {
+      // Mostrar cartel con los datos de búsqueda
+      if (resultados) {
+        resultados.innerHTML = `
+          <p>Mostrando alojamientos disponibles del <strong>${checkin}</strong> al <strong>${checkout}</strong> para <strong>${huespedes}</strong> huésped(es).</p>`;
+      }
+
+      try {
+        const res = await fetch(`http://localhost:3000/api/disponibles?checkin=${checkin}&checkout=${checkout}`);
+        const data = await res.json();
+        const disponibles = data.disponibles || [];
+
+        cards.forEach(card => {
+          const nombre = card.getAttribute('data-nombre');
+          card.style.display = disponibles.includes(nombre) ? 'block' : 'none';
+        });
+
+      } catch (err) {
+        console.error('❌ Error al consultar disponibilidad:', err.message);
+      }
+    } else {
+      // Si faltan datos, mostramos todo y mensaje de advertencia
+      if (resultados) {
+        resultados.innerHTML = `<p>Por favor seleccioná fechas y cantidad de huéspedes para buscar alojamiento.</p>`;
+      }
+      cards.forEach(card => card.style.display = 'block');
+    }
+
+    // Ocultar loading y mostrar contenedor
+    if (loading) loading.style.display = 'none';
+    if (contenedor) contenedor.style.display = 'flex';
+  });
+</script>
+
+<script>
+  function redirigirConParametros(pagina) {
+    const checkin = localStorage.getItem('checkin');
+    const checkout = localStorage.getItem('checkout');
+    const huespedes = localStorage.getItem('huespedes');
+
+    if (checkin && checkout && huespedes) {
+      const url = `${pagina}?checkin=${checkin}&checkout=${checkout}&huespedes=${huespedes}`;
+      window.location.href = url;
+    } else {
+      window.location.href = pagina;
+    }
+  }
+</script>
+
+</body>
+</html>

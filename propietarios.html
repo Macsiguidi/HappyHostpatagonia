@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Host Patagonia</title>
+  <link rel="stylesheet" href="propietarios.css">
+  <link rel="icon" type="image/png" href="logo/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="hero-inicio">
+    <nav class="menu-principal">
+       <!-- Logo móvil, inicialmente oculto -->
+      <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Happy Host" class="mobile-logo">
+      <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+      <ul>
+        <li><a href="index.html"><strong>INICIO</strong></a></li>
+        <li><a href="alojamientos.html"><strong>ALOJAMIENTOS</strong></a></li>
+        <li><img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo" class="logo-centrado"></li>
+        <li><a href="propietarios.html"><strong>PROPIETARIOS</strong></a></li>
+        <li><a href="https://wa.me/5492944700773" target="_blank"><strong>CONTACTO</strong></a></li>
+
+      </ul>
+    </nav>
+</header>
+
+<section class="seccion-propietarios">
+    <div class="fondo-blur">
+      <h2>¿Tenes una propiedad en Villa la Angostura y te gustaría recibir ingresos a través de la renta turística?</h2>
+      <p>Nosotros la gestionamos por vos.</p>
+      <p>En <strong>Happy Host Patagonia</strong> te ayudamos a <strong>maximizar el rendimiento de tu casa</strong> de forma simple, segura y transparente.</p>
+  
+      <p>Sabemos que alquilar no es solo publicar una foto:  
+      Es entender el mercado, anticiparse a los huéspedes, cuidar cada detalle y proteger tu propiedad como si fuera nuestra.</p>
+  
+      <h3>¿Qué hacemos por vos?</h3>
+      <ul>
+        <li>Publicamos y posicionamos tu propiedad en Airbnb, Booking y las mejores plataformas.</li>
+        <li>Administramos reservas, consultas, cobros y políticas de cancelación.</li>
+        <li>Coordinamos limpieza, mantenimiento y controles periódicos.</li>
+        <li>Optimizamos precios según temporada, demanda y eventos locales.</li>
+        <li>Ofrecemos atención personalizada a cada huésped antes, durante y después de su estadía.</li>
+        <li>Te mantenemos informado con reportes claros y actualizados.</li>
+      </ul>
+  
+      <h3>¿Qué ganás vos?</h3>
+      <ul>
+        <li>Más ingresos.</li>
+        <li>Menos preocupaciones.</li>
+        <li>La tranquilidad de saber que tu propiedad está en buenas manos.</li>
+      </ul>
+  
+      <p>Somos de Villa La Angostura, conocemos el lugar, su ritmo, su gente y sus oportunidades.  
+      Nos mueve un compromiso real: <strong>hacer que tu propiedad trabaje para vos</strong>, mientras vos decidís cuánto querés involucrarte.</p>
+  
+      <p>Si querés alquilar tu propiedad <strong>de manera profesional, cuidada y rentable</strong>, te invitamos a ser parte de Happy Host Patagonia.</p>
+   
+    <button id="mostrarFormulario" class="boton-contactar">enviar mensaje</button>
+
+    <form id="formulario-contacto" action="https://formsubmit.co/happyhostpatagonia@gmail.com" method="POST" style="display: none;">
+      <div class="campo">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="campo">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="campo">
+        <label for="telefono">Teléfono</label>
+        <input type="text" id="telefono" name="telefono" required>
+      </div>
+      <div class="campo">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Contanos sobre tu alojamiento..." required></textarea>
+      </div>
+
+      <button type="submit" class="boton-enviar">Enviar mensaje</button>
+      <input type="hidden" name="_captcha" value="false">
+      <div id="mensaje-exito" style="display: none; text-align: center; margin-top: 20px; font-weight: bold; color: #B58863;">
+        ✅ ¡Gracias por contactarnos! Te responderemos pronto.
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+  
+
+
+  <footer class="footer">
+    <div class="footer-content">
+  
+      <div class="footer-logo">
+        <img src="logo/logo.png" alt="Happy Host Patagonia" />
+      </div>
+  
+      <div class="footer-info">
+        <p>Villa La Angostura, Neuquén, Patagonia Argentina</p>
+        <p>contacto@happyhostpatagonia.com</p>
+      </div>
+  
+      <div class="footer-redes">
+        <a href="https://www.instagram.com/hhpatagonia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+          <img src="logo/instagram.png" alt="Instagram" class="icono-footer" />
+        </a>
+        <a href="https://wa.me/5492944700773" target="_blank">
+          <img src="logo/whatsapp.png" alt="WhatsApp" class="icono-footer" />
+        </a>
+        <a href="https://x.com/hhpatagonia?s=21&t=UH7im4Y6WJT3722TpA05Iw" target="_blank">
+          <img src="logo/twitter.png" alt="Twitter" class="icono-footer" />
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+  const btnMostrar = document.getElementById('mostrarFormulario');
+  const formContacto = document.getElementById('formulario-contacto');
+  const mensajeExito = document.getElementById('mensaje-exito');
+
+  btnMostrar.addEventListener('click', () => {
+    formContacto.style.display = 'block';
+    btnMostrar.style.display = 'none';
+  });
+
+  formContacto.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = new FormData(formContacto);
+
+    fetch(formContacto.action, {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        formContacto.reset();
+        mensajeExito.style.display = 'block';
+      } else {
+        alert('Ocurrió un error. Por favor, intentá de nuevo.');
+      }
+    }).catch(error => {
+      alert('Error al enviar el formulario.');
+    });
+  });
+</script>
+
+<script>
+  // Mostrar/ocultar menú hamburguesa
+  const toggleBtn = document.querySelector(".menu-toggle");
+const menuList = document.querySelector(".menu-principal ul");
+
+toggleBtn.addEventListener("click", () => {
+  menuList.classList.toggle("open");
+});
+</script>
+
+</body>
+</html>
+  

@@ -1,0 +1,862 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #D3C3B9;
+  color: #161616;
+}
+
+.hero-inicio {
+  position: relative;
+  height: 100vh;
+  background: url('fondo/montaña.png') no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  z-index: 0;
+}
+
+.hero-inicio::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(211,195,185, 1), rgba(211,195,185, 0));
+  z-index: 1;
+}
+
+.menu-principal ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color:#1D292A;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 8px 40px;
+}
+
+
+.menu-principal a:hover {
+  color: #B58863;
+}
+
+.logo-centrado {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.contenido-hero {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 60px 60px 60px;
+}
+
+.texto-bienvenida h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color:#D3C3B9;
+}
+
+.texto-bienvenida p {
+  font-size: 1.8rem;
+  color: #D3C3B9;
+  margin-top: 10px;
+}
+
+
+/*motor reserva*/
+
+.buscador {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(255, 244, 212, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  max-width: 95%;
+  margin: 25px auto;
+}
+
+
+.buscador input[type="text"] {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  width: 220px;
+  background-color: white;
+  color: #3D4D55;
+  font-weight: 500;
+  align-items: center;
+}
+
+#rango-fechas {
+  width: 320px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  color: #3D4D55;
+  font-weight: 500;
+  text-align: center;
+}
+
+.placeholder-fechas::placeholder {
+  color: #aaa;
+  font-weight: 400;
+}
+
+
+.selector-huespedes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 15px;
+}
+
+.selector-huespedes button {
+  background-color: #B58863;
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.selector-huespedes button:hover {
+  background-color: #A07654;
+}
+
+.selector-huespedes span {
+  min-width: 60px;
+  text-align: center;
+  font-weight: bold;
+  color: #3D4D55;
+}
+
+.selector-huespedes span.placeholder {
+  color: #aaa;
+  font-weight: normal;
+}
+
+
+.buscador button[type="submit"] {
+  background-color: #B58863;
+  color: white;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.buscador button[type="submit"]:hover {
+  background-color: #A07654;
+}
+
+
+/*Calendario*/
+/* 1. Estilo general del calendario */
+.flatpickr-calendar {
+  width: 700px !important;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 15px;
+}
+
+/* 2. Ocultar días de la semana (lun, mar...) */
+.flatpickr-weekdays {
+  display: none !important;
+}
+
+/* 3. Espaciado y distribución entre días */
+.flatpickr-days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: center;
+  grid-gap: 4px;
+}
+
+/* 4. Día normal */
+.flatpickr-day {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  color: #3D4D55;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* 5. Día actual */
+.flatpickr-day.today {
+  border: 1px solid #B58863;
+  background: transparent;
+  color: #3D4D55;
+}
+
+/* 6. Día seleccionado (borde color paleta) */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: none !important;
+  border: 2px solid #B58863 !important;
+  color: #3D4D55 !important;
+}
+
+/* 7. Rango de fechas (fondo clarito) */
+.flatpickr-day.inRange {
+  background: rgba(181, 136, 99, 0.1) !important;
+  color: #3D4D55 !important;
+}
+
+/* 8. Navegación (mes anterior/siguiente) */
+.flatpickr-months .flatpickr-month {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3D4D55;
+  height: auto;
+}
+
+.flatpickr-current-month .flatpickr-prev-month,
+.flatpickr-current-month .flatpickr-next-month {
+  color: #B58863;
+}
+
+/* 9. Soluciona el desbalance visual entre los dos meses */
+.flatpickr-calendar .dayContainer {
+  flex: 1 1 50%;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 50%;
+}
+
+.flatpickr-calendar .dayContainer:last-child {
+  margin-right: 0 !important;
+}
+
+
+
+
+
+/* presentacion*/
+.bloque-100happy {
+  padding: 60px 20px;
+  background-color: transparent; /* sin fondo blanco */
+}
+
+.contenedor-100happy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.texto-happy {
+  flex: 1 1 500px;
+  font-size: 1.1rem;
+  color: #3D4D55;
+  line-height: 1.6;
+  padding-left: 60px; /* o probá con 60px, 80px, etc. */
+}
+
+.logo-happy {
+  flex: 1 1 00px;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-happy img {
+  width: 400px; /* o el tamaño que te guste */
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* alojamientos destacados */
+.alojamientos-destacados {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+}
+
+.tarjeta {
+  width: 300px;
+  height: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta .imagen {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.tarjeta .imagen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 22, 22, 0.2);
+  transition: background 0.3s ease;
+}
+
+.tarjeta h3 {
+  position: relative;
+  z-index: 1;
+  color: #F5F5F4;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tarjeta:hover .imagen {
+  transform: scale(1.05);
+}
+
+.tarjeta:hover .imagen::before {
+  background: rgba(22, 22, 22, 0.5); /* Más oscuro en hover */
+}
+
+/*seccion conoce villa la angostura*/
+.video-section {
+  position: relative;
+  padding: 150px 60px;
+  overflow: hidden;
+  background-image: url('fondo/hora\ azul.png');
+  background-size: 100% auto; /* Asegura que la imagen cubra todo el contenedor */
+  background-position: center ; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+}
+
+.overlay-top,
+.overlay-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: 1;
+}
+
+.overlay-top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(211,195,185, 1), transparent 100%);
+}
+
+.overlay-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #1D292A 0%, transparent 100%);
+}
+.video-texto h2 {
+  color: #D3C3B9;
+  text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.4);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.video-texto p {
+  color: #D3C3B9;
+  text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.4);
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+
+.video-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  flex-wrap: nowrap;
+}
+
+
+.video-thumbnails {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 160px);
+  grid-gap: 20px;
+  justify-content: flex-end;
+}
+
+.video-thumb {
+  position: relative;
+  width: 170px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.video-thumb video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  pointer-events: none; /* evita que el video interfiera con el hover o clic */
+}
+
+
+.video-thumb:hover {
+  transform: scale(1.05);
+  filter: brightness(0.8);
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
+}
+
+/*footer*/
+.footer {
+  background-color: #1D292A;
+  color: #D3C3B9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: center;
+  padding-left: 40%;
+}
+
+.footer-redes a {
+  margin: 0 10px;
+  color: #D3C3B9;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  gap: 20px;
+}
+
+.footer-redes a:hover {
+  color: #B58863;
+}
+.icono-footer {
+  width: 50px; /* Ajustá el tamaño a gusto */
+  height: 50px;
+  border-radius: 50%; /* Lo hace redondo */
+  background-color: #3D4D55; /* Fondo con color de tu paleta */
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto hover */
+.icono-footer:hover {
+  background-color: #1D292A; /* Otro color de tu paleta */
+  transform: scale(1.1);
+}
+
+
+/* ————— Menú hamburguesa ————— */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #1D292A;
+  cursor: pointer;
+  z-index: 100;
+}
+.menu-principal {
+  position: relative;
+}
+.menu-principal ul {
+  display: flex;
+}
+.menu-principal ul.open {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.menu-principal ul.open li {
+  display: block;
+  text-align: center;
+  margin: 12px 0;
+}
+
+/* Por defecto, ocultamos el logo móvil */
+.mobile-logo {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  /* ————— Navbar ————— */
+  .logo-centrado {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 60px;
+    z-index: 1001;
+  }
+  .menu-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    font-size: 1.8rem;
+    color: #fff4d4;
+    background: none;
+    border: none;
+    z-index: 1002;
+  }
+  .menu-principal ul {
+    display: none;
+  }
+  .menu-principal ul.open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.95);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+  }
+  .menu-principal ul.open li:nth-child(3) { display: none; }
+  .menu-principal ul.open li a {
+    font-size: 1.4rem;
+    color: #1D292A;
+  }
+  .mobile-logo {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 60px;     /* ajustá a tu gusto */
+    height: auto;
+    z-index: 1003;
+  }
+
+  /* Oculta el <li> con clase logo-centrado dentro del <ul> */
+  .menu-principal ul li:nth-child(3) {
+    display: none !important;
+  }
+
+  /* Ajusta el padding del nav para que no lo tape el logo */
+  .menu-principal {
+    padding-left: 4rem;  /* espacio para que no solape el logo */
+  }
+
+  /* ————— Hero ————— */
+.hero-inicio {
+  min-height: 60vh !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  padding: 1.5rem 1rem;
+}
+
+.contenido-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.texto-bienvenida {
+  text-align: left !important;
+  margin: 0 1rem 1rem;
+}
+
+.texto-bienvenida h1 {
+  font-size: 1.8rem !important;
+  line-height: 1.2;
+}
+
+.texto-bienvenida p {
+  font-size: 1rem !important;
+  margin-top: 0.5rem;
+}
+
+/* ————— Buscador ————— */
+.buscador {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch;
+  gap: 1rem !important;
+  width: 95% !important;
+  max-width: 550px !important;
+  margin: 20px auto 0 auto !important;
+  padding: 1rem;
+  background-color: rgba(255,244,212,0.6) !important;
+  position: relative;
+  top: 20px;
+}
+
+#rango-fechas,
+.selector-huespedes,
+.buscador button[type="submit"] {
+  width: 100% !important;
+  max-width: none;
+  justify-content: center; /* 👈 Esto lo centra horizontalmente */
+}
+
+
+  /* ————— 100% Happy ————— */
+  .bloque-100happy .contenedor-100happy {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 1.5rem 1rem !important;
+    gap: 1rem;
+  }
+    .texto-happy {
+      text-align: center !important;
+      max-width: 90% !important;
+      margin: 0 auto !important;
+      padding: 0 1rem !important;
+    }
+  
+  
+  .logo-happy img {
+    width: 300px !important;
+  }
+
+  /* ————— Alojamientos destacados ————— */
+  .alojamientos-destacados {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding: 1.5rem 1rem !important;
+  }
+  .alojamientos-destacados .tarjeta {
+    width: 90% !important;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  /* ————— Alojamientos destacados (índice) ————— */
+.alojamientos-destacados .tarjeta {
+  height: auto !important;      /* Quita el height fijo */
+}
+.alojamientos-destacados .tarjeta .imagen {
+  height: 180px !important;     /* Ajusta este valor a la altura deseada */
+}
+
+/* ————— Listado completo de alojamientos (alojamientos.html) ————— */
+.grid-alojamientos .card {
+  height: auto !important;
+}
+.grid-alojamientos .card .carousel {
+  height: 200px !important;     /* También podés poner 180px, 150px… */
+}
+.grid-alojamientos .card .slide {
+  height: 200px !important;
+  object-fit: cover;
+}
+
+  /* ————— “Descubrí…” (video/texto) ————— */
+  .video-section .video-layout {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 1rem !important;
+    gap: 1rem;
+    
+  }
+  .video-texto h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.5rem;
+  }
+  .video-texto p {
+    font-size: 1rem !important;
+    color: #3D4D55;
+  }
+  .video-thumbnails {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+  /* ————— Ajuste de fondo en sección de descubrí ————— */
+.video-section {
+  /* Asegura que el fondo llene todo el alto disponible */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-image: url('fondo/ChatGPT\ Image\ 1\ may\ 2025\,\ 06_32_17\ p.m..png') !important;
+  /* Reducimos un poco el padding vertical
+     para que no se corte antes del footer */
+  padding: 100px 0 !important;
+  /* Quitamos overflow oculto si quieres que el gradiente
+     no aparezca muy recortado */
+  overflow: visible !important;
+}
+
+/* Ajuste de overlays para que cubran todo el ancho */
+.video-section .overlay-top,
+.video-section .overlay-bottom {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+/* ————— Footer: siempre en columna y centrado ————— */
+.footer {
+  text-align: center;
+}
+.footer .footer-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 2rem 1rem !important;
+}
+.footer-logo {
+  margin-bottom: 0.5rem !important;
+}
+.footer-info {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+.footer-info p {
+  margin: 0 !important;
+  padding-left: 0 !important;
+  display: block !important;
+  text-align: center !important;
+}
+.footer-redes {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  margin-top: 0.5rem !important;
+}
+.footer-redes a {
+  display: inline-block !important;
+}
+.footer-redes a .icono-footer {
+  width: 40px !important;
+  height: 40px !important;
+  margin: 0 !important;
+}
+
+.footer {
+  width: 100% !important;
+}
+
+.footer-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.footer-info,
+.footer-redes {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.footer-info p {
+  word-break: break-word;
+}
+
+}
+
+.cartel-reserva {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #25D366;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  text-align: center;
+}
+
+
+
+

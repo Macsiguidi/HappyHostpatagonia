@@ -1,0 +1,421 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background-color: #6c635e;
+    color: #161616;
+  }
+  
+  .hero-inicio {
+    position: relative;
+    height: 150vh; /* Subí un poco el alto para ver más fondo */
+    background: url('fondo/ChatGPT\ Image\ 1\ may\ 2025\,\ 06_32_17\ p.m..png') no-repeat center center / cover;
+    background-position-y: -10vh; /* Podés ajustar a -15vh o -10vh según cómo se vea mejor */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1;
+  }
+  
+  .hero-inicio::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgb(115, 106, 100), rgba(211,195,185, 0));
+    z-index: 1;
+  }
+  
+  .menu-principal ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .menu-principal a {
+    text-decoration: none;
+    color:#fff4d4;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 8px 40px;
+  }
+  .menu-principal a:hover {
+    color: #B58863;
+  }
+  
+  .logo-centrado {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+  
+  .contenido-hero {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 60px 60px;
+  }
+  
+
+  /*tarjeta alojamiento*/
+  .grid-alojamientos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 60px;
+    position: relative;
+    z-index: 2;
+    margin-top: -680px; /* Hace que las tarjetas se suban sobre la imagen */
+  }
+  
+  .card {
+    width: 390px;
+    height: 700px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background-color: #1D292A;
+    transition: transform 0.3s ease;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+  }
+  
+  .carousel img.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+  }
+  
+  .carousel img.slide.active {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  
+  .carousel .prev,
+  .carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  
+  .carousel .prev {
+    left: 10px;
+  }
+  
+  .carousel .next {
+    right: 10px;
+  }
+  
+  
+  .card h3 {
+    padding: 10px 0 5px;
+    margin: 0;
+    font-size: 1.2rem;
+    color: #D3C3B9;
+  }
+  
+  
+  .ver-mas {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #B58863; /* o el color que estés usando */
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  
+  .ver-mas:hover {
+    background-color: #A07956;
+  }
+  
+  
+
+  /*footer*/
+.footer {
+  background-color: #1D292A;
+  color: #D3C3B9;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-info p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: center;
+  padding-left: 40%;
+}
+
+.footer-redes a {
+  margin: 0 10px;
+  color: #D3C3B9;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  gap: 20px;
+}
+
+.footer-redes a:hover {
+  color: #B58863;
+}
+.icono-footer {
+  width: 50px; /* Ajustá el tamaño a gusto */
+  height: 50px;
+  border-radius: 50%; /* Lo hace redondo */
+  background-color: #3D4D55; /* Fondo con color de tu paleta */
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto hover */
+.icono-footer:hover {
+  background-color: #1D292A; /* Otro color de tu paleta */
+  transform: scale(1.1);
+}
+
+
+.pantalla-carga {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('fondo/Bahía\ Mansa-5494.jpg') no-repeat center center / cover;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.pantalla-carga .spinner {
+  border: 6px solid #ccc;
+  border-top: 6px solid #B58863;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: girar 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ————— Menú hamburguesa ————— */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #1D292A;
+  cursor: pointer;
+  z-index: 100;
+}
+.menu-principal {
+  position: relative;
+}
+.menu-principal ul {
+  display: flex;
+}
+.menu-principal ul.open {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.menu-principal ul.open li {
+  display: block;
+  text-align: center;
+  margin: 12px 0;
+}
+
+/* Por defecto, ocultamos el logo móvil */
+.mobile-logo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  /* Menú móvil */
+  .menu-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1D292A;
+    z-index: 1000;
+    padding-left: 4rem;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+    font-size: 1.8rem;
+    color: #fff4d4;
+    background: none;
+    border: none;
+    z-index: 1002;
+  }
+  .menu-principal ul {
+    display: none;
+  }
+  .menu-principal ul.open {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.95);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+  }
+  .menu-principal ul.open li:nth-child(3) { display: none; }
+  .menu-principal ul.open li a {
+    font-size: 1.4rem;
+    color: #1D292A;
+  }
+  .mobile-logo {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 60px;     /* ajustá a tu gusto */
+    height: auto;
+    z-index: 1003;
+  }
+
+  /* Oculta el <li> con clase logo-centrado dentro del <ul> */
+  .menu-principal ul li:nth-child(3) {
+    display: none !important;
+  }
+
+  /* Ajusta el padding del nav para que no lo tape el logo */
+  .menu-principal {
+    padding-left: 4rem;  /* espacio para que no solape el logo */
+  }
+
+  /* Tarjetas más chicas */
+  .grid-alojamientos {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 10px !important;
+    margin-top: -500px !important;
+    z-index: 1;
+    position: relative;
+  }
+
+  .card {
+    width: 90% !important;
+    max-width: 350px;
+    height: 350px !important;
+  }
+
+  .carousel {
+    height: 220px !important;
+  }
+
+  .carousel img.slide {
+    height: 220px !important;
+  }
+
+  /* Footer móvil igual que index */
+  .footer-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1rem;
+    padding: 2rem 1rem !important;
+  }
+
+  .footer-info {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding-left: 0 !important;
+  }
+
+  .footer-info p {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .footer-redes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .footer-redes a .icono-footer {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+

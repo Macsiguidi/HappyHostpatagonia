@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Host Patagonia</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" type="image/png" href="logo/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+<body>
+
+  <header class="hero-inicio">
+    <nav class="menu-principal">
+       <!-- Logo móvil, inicialmente oculto -->
+      <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Happy Host" class="mobile-logo">
+      <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+      <ul>
+        <li><a href="index.html"><strong>INICIO</strong></a></li>
+        <li><a href="alojamientos.html"><strong>ALOJAMIENTOS</strong></a></li>
+        <li><img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo" class="logo-centrado"></li>
+        <li><a href="propietarios.html"><strong>PROPIETARIOS</strong></a></li>
+        <li><a href="https://wa.me/5492944700773" target="_blank"><strong>CONTACTO</strong></a></li>
+
+      </ul>
+    </nav>
+
+    <div class="contenido-hero">
+      <div class="texto-bienvenida">
+        <h1>Bienvenido a Happy Host Patagonia</h1>
+        <p>Tu alquiler en Villa La Angostura</p>
+      </div>
+      <form class="buscador" id="form-busqueda">
+        <input type="text" id="rango-fechas" class="placeholder-fechas" placeholder="Llegada → Salida" readonly>
+
+      
+        <div class="selector-huespedes">
+          <button type="button" id="menos">−</button>
+          <span id="cantidad">Huéspedes</span>
+          <button type="button" id="mas">+</button>
+          <input type="hidden" id="huespedes" name="huespedes" value="0">
+        </div>
+      
+        <button type="submit">Buscar</button>
+      </form>
+      
+    </div>
+  </header>
+  <section class="bloque-100happy">
+    <div class="contenedor-100happy">
+      <div class="texto-happy">
+      <h2>Sentite como en casa, rodeado de naturaleza</h2>
+      <p>En <strong>Happy Host Patagonia</strong> queremos que tu experiencia en Villa La Angostura sea única. Te ofrecemos alojamientos cómodos, cálidos y bien ubicados, para que disfrutes al máximo de la tranquilidad del sur. Nos encanta recibirte, acompañarte y ayudarte a vivir momentos inolvidables.</p>
+    </div>
+    <div class="logo-happy">
+      <img src="logo/ChatGPT Image 21 abr 2025, 02_50_20 p.m..png" alt="100% Happy">
+    </div>
+  </div>
+</section>
+
+<section class="alojamientos-destacados">
+  <div class="tarjeta" onclick="location.href='calafate1.html'">
+    <div class="imagen" style="background-image: url('fondo/casa1_img1.jpg');">
+      <h3>Calafate</h3>
+    </div>
+  </div>
+  <div class="tarjeta" onclick="location.href='cruz5.html'">
+    <div class="imagen" style="background-image: url('fondo/cds5_2.jpg');">
+      <h3>Cruz del Sur</h3>
+    </div>
+  </div>
+  <div class="tarjeta" onclick="location.href='nilidas.html'">
+    <div class="imagen" style="background-image: url('fondo/nilidas1.jpg');">
+      <h3>Las Nílidas</h3>
+    </div>
+  </div>
+  <div class="tarjeta" onclick="location.href='paisajismo.html'">
+    <div class="imagen" style="background-image: url('fondo/paisajismo1.jpg');">
+      <h3>Paisajismo</h3>
+    </div>
+  </div>
+  <div class="tarjeta" onclick="location.href='gurisa.html'">
+    <div class="imagen" style="background-image: url('fondo/gurisa2.jpg');">
+      <h3>La Gurisa</h3>
+    </div>
+  </div>
+</section>
+<section class="video-section">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <div class="video-layout">
+    <div class="video-texto">
+      <h2>Descubrí Villa La Angostura como nunca antes</h2>
+      <p>Sumergite en los paisajes, la tranquilidad y la esencia de la Patagonia. Recorremos cada rincón con vos.</p>
+    </div>
+    <div class="video-thumbnails">
+  
+      <div class="video-thumb" style="background-image: url('fondo/atardecer.png')">
+      </div>
+      <div class="video-thumb" style="background-image: url('fondo/rio.png')">
+      </div>
+      <div class="video-thumb" style="background-image: url('fondo/dora.jpg')">
+      </div>
+      <div class="video-thumb" style="background-image: url('fondo/puente.png')">
+      </div>
+      <div class="video-thumb">
+        <video autoplay muted loop playsinline>
+          <source src="videos/Screen Recording 2025-04-22 113508.mp4" type="video/mp4">
+          Tu navegador no soporta video HTML5.
+        </video>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-content">
+
+    <div class="footer-logo">
+      <img src="logo/logo.png" alt="Happy Host Patagonia" />
+    </div>
+
+    <div class="footer-info">
+      <p>Villa La Angostura, Neuquén, Patagonia Argentina</p>
+      <p>contacto@happyhostpatagonia.com</p>
+    </div>
+
+    <div class="footer-redes">
+      <a href="https://www.instagram.com/hhpatagonia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+        <img src="logo/instagram.png" alt="Instagram" class="icono-footer" />
+      </a>
+      <a href="https://wa.me/5492944700773" target="_blank">
+        <img src="logo/whatsapp.png" alt="WhatsApp" class="icono-footer" />
+      </a>
+      <a href="https://x.com/hhpatagonia?s=21&t=UH7im4Y6WJT3722TpA05Iw" target="_blank">
+        <img src="logo/twitter.png" alt="Twitter" class="icono-footer" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div id="cartel-reserva" class="cartel-reserva" style="display: none;">
+  ✅ ¡Gracias por tu reserva! En breve nos contactaremos 😊
+</div>
+
+
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script src="main.js"></script>
+ 
+  <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+
+</body>
+</html>
