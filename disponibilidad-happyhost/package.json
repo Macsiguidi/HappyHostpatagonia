@@ -16,6 +16,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "litepicker": "^2.0.12",
+    "node-ical": "^0.20.1",
     "nodemailer": "^7.0.2"
   }
 }
