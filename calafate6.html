@@ -252,7 +252,7 @@ localStorage.removeItem("huespedes");
 
   async function loadDisabledDates(picker) {
     try {
-      cconst resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate6');
+      const resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate6');
 
       if (!resp.ok) throw new Error(await resp.text());
       const rangos = await resp.json();
