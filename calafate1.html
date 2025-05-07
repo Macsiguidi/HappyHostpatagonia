@@ -251,7 +251,8 @@ localStorage.removeItem("huespedes");
 
   async function loadDisabledDates(picker) {
     try {
-      const resp = await fetch('http://localhost:3000/api/ocupados/calafate7');
+      const resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate1');
+
       if (!resp.ok) throw new Error(await resp.text());
       const rangos = await resp.json();
       picker.set('disable', rangos.map(r => ({ from: r.from, to: r.to })));
@@ -323,7 +324,7 @@ localStorage.removeItem("huespedes");
     reservarBtn.disabled = true;
 
     try {
-      const url = `http://localhost:3000/api/precios-diarios?start=${startValue}&end=${endValue}&houseId=${HOUSE_ID}&roomId=${ROOM_ID}`;
+      cconst url = `https://disponibilidad-happy-host-patagonia.onrender.com/api/precios-diarios?start=${startValue}&end=${endValue}&houseId=${HOUSE_ID}&roomId=${ROOM_ID}`;
       const resp = await fetch(url);
       if (!resp.ok) throw new Error(await resp.text());
       const { dias = [], extras = [] } = await resp.json();
