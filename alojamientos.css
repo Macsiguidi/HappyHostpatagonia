@@ -362,7 +362,7 @@
     flex-direction: column !important;
     align-items: center !important;
     padding: 20px 10px !important;
-    margin-top: -500px !important;
+    margin-top: -800px !important;
     z-index: 1;
     position: relative;
   }
@@ -417,5 +417,33 @@
   }
 }
 
+/* Ajustes para pantallas pequeñas (iPhone, Android) */
+@media only screen and (max-width: 480px) {
+  /* Hace que el calendario ocupe casi todo el ancho */
+  .flatpickr-calendar {
+    width: 90% !important;
+    left: 5% !important;
+    font-size: 14px;
+  }
+
+  /* Reduce el padding de celdas para que entren bien */
+  .flatpickr-weekdays, 
+  .flatpickr-days {
+    padding: 0.2em 0.2em;
+  }
+
+  /* Ajusta el tamaño de cada día */
+  .flatpickr-day {
+    width: 2.2em;
+    height: 2.2em;
+    line-height: 2.2em;
+  }
+
+  /* Inputs a ancho completo */
+  #start, #end {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 
 
