@@ -628,3 +628,56 @@ body {
     margin-bottom: 2rem !important; /* espacio extra debajo */
   }
 }
+
+
+/* ===== Tipografía del formulario de reserva ===== */
+.reserva,
+.reserva * {
+  font-family: 'Poppins', sans-serif;
+  color: #3D4D55;
+}
+
+/* Inputs de fechas y huéspedes */
+.reserva input[type="text"],
+.reserva input[type="number"] {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #DDD;
+}
+
+/* Label de Huéspedes */
+.reserva label[for="guests"] {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Botón */
+#btnReservar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #B58863;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#btnReservar:hover {
+  background-color: #A07654;
+}
+
+/* Texto de resumen (noches, total, etc.) */
+#resultado {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+#resultado ul.booking-summary li {
+  margin-bottom: 0.25rem;
+}

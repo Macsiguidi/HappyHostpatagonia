@@ -365,60 +365,68 @@
 </script>  
 
 <script>
-  // 0) Capacidades máximas
-  const capacities = {
-    calafate1:    6,
-    calafate2:    4,
-    calafate3:    6,
-    calafate4:    6,
-    calafate5:    4,
-    calafate6:    6,
-    calafate7:    4,
-    cruzdelsur4:  2,
-    cruzdelsur5:  2,
-    nilidas:      4,
-    gurisa:       7,
-    paisajismo:   3
-  };
-
   document.addEventListener('DOMContentLoaded', async () => {
-    const checkin    = localStorage.getItem('checkin');
-    const checkout   = localStorage.getItem('checkout');
-    const guests     = parseInt(localStorage.getItem('huespedes'), 10) || 1; // capturamos huéspedes
+    // 1) Cargo filtros guardados
+    const checkin   = localStorage.getItem('checkin');
+    const checkout  = localStorage.getItem('checkout');
+    const huespedes = parseInt(localStorage.getItem('huespedes') || '1', 10);
+
+    // 2) Capacidades máximas por casa
+    const capacities = {
+      calafate1:   6,
+      calafate2:   6,
+      calafate3:   6,
+      calafate4:   6,
+      calafate5:   4,
+      calafate6:   6,
+      calafate7:   4,
+      cruzdelsur4: 2,
+      cruzdelsur5: 2,
+      nilidas:     4,
+      gurisa:      7,
+      paisajismo:  3
+    };
+
     const loading    = document.getElementById('loading-disponibilidad');
     const contenedor = document.getElementById('contenedor-alojamientos');
     const cards      = document.querySelectorAll('.card[data-nombre]');
 
+    // Si faltan fechas, aplico solo filtro de huéspedes
     if (!checkin || !checkout) {
+      cards.forEach(card => {
+        const nombre = card.dataset.nombre;
+        card.style.display = (huespedes <= capacities[nombre]) ? 'block' : 'none';
+      });
       loading.style.display = 'none';
       contenedor.style.display = 'flex';
       return;
     }
 
     try {
-      // 👉 Apuntamos a tu API en Render, no a localhost
+      // 3) Fetch a tu servicio en Render
       const res = await fetch(
-        `https://disponibilidad-happy-host-patagonia.onrender.com/api/disponibles?checkin=${checkin}&checkout=${checkout}`
+        'https://disponibilidad-happy-host-patagonia.onrender.com/api/disponibles'
+        + `?checkin=${checkin}&checkout=${checkout}`
       );
       const data = await res.json();
       const disponibles = data.disponibles || [];
 
+      // 4) Muestro solo las tarjetas que cumplan ambas condiciones
       cards.forEach(card => {
-        const nombre = card.getAttribute('data-nombre');
-        // ✅ mostramos sólo si está libre y su capacidad >= huéspedes
-        const canShow = disponibles.includes(nombre)
-                     && capacities[nombre] >= guests;
-        card.style.display = canShow ? 'block' : 'none';
+        const nombre   = card.dataset.nombre;
+        const libre    = disponibles.includes(nombre);
+        const admite   = huespedes <= capacities[nombre];
+        card.style.display = (libre && admite) ? 'block' : 'none';
       });
-
     } catch (err) {
-      console.error('❌ Error al consultar disponibilidad:', err.message);
+      console.error('❌ Error al consultar disponibilidad:', err);
     } finally {
       loading.style.display    = 'none';
       contenedor.style.display = 'flex';
     }
   });
 </script>
+
 
 
 
