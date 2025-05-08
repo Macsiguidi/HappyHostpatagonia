@@ -12,18 +12,18 @@
 
   <header class="hero-inicio">
     <nav class="menu-principal">
-       <!-- Logo móvil, inicialmente oculto -->
-      <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Happy Host" class="mobile-logo">
-      <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
-      <ul>
-        <li><a href="index.html"><strong>INICIO</strong></a></li>
-        <li><a href="alojamientos.html"><strong>ALOJAMIENTOS</strong></a></li>
-        <li><img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo" class="logo-centrado"></li>
-        <li><a href="propietarios.html"><strong>PROPIETARIOS</strong></a></li>
-        <li><a href="https://wa.me/5492944700773" target="_blank"><strong>CONTACTO</strong></a></li>
+      <!-- Logo móvil, inicialmente oculto -->
+     <img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Happy Host" class="mobile-logo">
+     <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+     <ul>
+       <li><a href="index.html"><strong>INICIO</strong></a></li>
+       <li><a href="alojamientos.html"><strong>ALOJAMIENTOS</strong></a></li>
+       <li><img src="logo/ChatGPT Image 18 abr 2025, 06_27_22 p.m..png" alt="Logo" class="logo-centrado"></li>
+       <li><a href="propietarios.html"><strong>PROPIETARIOS</strong></a></li>
+       <li><a href="https://wa.me/5492944700773" target="_blank"><strong>CONTACTO</strong></a></li>
 
-      </ul>
-    </nav>
+     </ul>
+   </nav>
 </header>
 
 <div id="loading-disponibilidad" class="pantalla-carga">
@@ -31,9 +31,8 @@
   <p>Buscando disponibilidad...</p>
 </div>
 
-
+<section class="seccion-alojamientos">
 <div class="grid-alojamientos" id="contenedor-alojamientos" style="display: none;">
-
   <div class="card" data-nombre="calafate1">
     <div class="carousel">
       <img src="propiedades/casa1/casa1_img1.jpg" class="slide active" alt="Calafate 1">
@@ -296,7 +295,7 @@
     <a class="ver-mas" href="#" onclick="redirigirConParametros('calafate6.html')">Ver más</a>
   </div>
 </div>
-
+</section>
 
   <footer class="footer">
     <div class="footer-content">
@@ -374,7 +373,7 @@
     // 2) Capacidades máximas por casa
     const capacities = {
       calafate1:   6,
-      calafate2:   6,
+      calafate2:   4,
       calafate3:   6,
       calafate4:   6,
       calafate5:   4,
@@ -440,49 +439,7 @@ toggleBtn.addEventListener("click", () => {
 });
 </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const checkin    = localStorage.getItem('checkin');
-    const checkout   = localStorage.getItem('checkout');
-    const huespedes  = localStorage.getItem('huespedes');
-    const loading    = document.getElementById('loading-disponibilidad');
-    const contenedor = document.getElementById('contenedor-alojamientos');
-    const cards      = document.querySelectorAll('.card[data-nombre]');
-    const resultados = document.getElementById('resultados-busqueda');
 
-    if (checkin && checkout && huespedes) {
-      // Mostrar cartel con los datos de búsqueda
-      if (resultados) {
-        resultados.innerHTML = `
-          <p>Mostrando alojamientos disponibles del <strong>${checkin}</strong> al <strong>${checkout}</strong> para <strong>${huespedes}</strong> huésped(es).</p>`;
-      }
-
-      try {
-        const res = await fetch(`http://localhost:3000/api/disponibles?checkin=${checkin}&checkout=${checkout}`);
-        const data = await res.json();
-        const disponibles = data.disponibles || [];
-
-        cards.forEach(card => {
-          const nombre = card.getAttribute('data-nombre');
-          card.style.display = disponibles.includes(nombre) ? 'block' : 'none';
-        });
-
-      } catch (err) {
-        console.error('❌ Error al consultar disponibilidad:', err.message);
-      }
-    } else {
-      // Si faltan datos, mostramos todo y mensaje de advertencia
-      if (resultados) {
-        resultados.innerHTML = `<p>Por favor seleccioná fechas y cantidad de huéspedes para buscar alojamiento.</p>`;
-      }
-      cards.forEach(card => card.style.display = 'block');
-    }
-
-    // Ocultar loading y mostrar contenedor
-    if (loading) loading.style.display = 'none';
-    if (contenedor) contenedor.style.display = 'flex';
-  });
-</script>
 
 <script>
   function redirigirConParametros(pagina) {
