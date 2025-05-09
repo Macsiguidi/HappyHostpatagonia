@@ -200,9 +200,8 @@
   </script>
 
 <script>
-  const USD_TO_ARS = 1400;
-  const HOUSE_ID   = 601552; // 🔄 Cámbialo por cada “calafateX”
-  const ROOM_ID    = 668343; // 🔄 …
+  const HOUSE_ID   = 601552;
+  const ROOM_ID    = 668343;
 
   const params = new URLSearchParams(window.location.search);
   const checkin   = params.get("checkin");
@@ -210,9 +209,9 @@
   const huespedes = params.get("huespedes");
 
   // 👇 Limpieza de localStorage después de usarlos
-localStorage.removeItem("checkin");
-localStorage.removeItem("checkout");
-localStorage.removeItem("huespedes");
+  localStorage.removeItem("checkin");
+  localStorage.removeItem("checkout");
+  localStorage.removeItem("huespedes");
 
   const startInput  = document.getElementById('start');
   const endInput    = document.getElementById('end');
@@ -269,10 +268,9 @@ localStorage.removeItem("huespedes");
   guestsInput.addEventListener('input', calculate);
   currSelect.addEventListener('change', calculate);
 
-  // ✅ MOSTRAR SOLO ARS antes del 01/08/2025 — editable
   function handleCurrencyRules(fechaCheckin) {
-    const limite = new Date('2025-07-31'); //cambio de fechas para calcular el precio
     const fecha  = new Date(fechaCheckin);
+    const limite = new Date('2025-09-30');
 
     if (!fechaCheckin) {
       currSelect.style.display = 'block';
@@ -312,7 +310,7 @@ localStorage.removeItem("huespedes");
       return;
     }
 
-    const MAX_GUESTS = 6, FREE_GUESTS = 4;
+    const MAX_GUESTS = 6, FREE_GUESTS = 5;
     if (guests > MAX_GUESTS) {
       resDiv.textContent = `La capacidad máxima es de ${MAX_GUESTS} huéspedes.`;
       reservarBtn.disabled = true;
@@ -352,12 +350,23 @@ localStorage.removeItem("huespedes");
         baseUSD += p.price_per_day;
       }
 
-      const extraUnit = extras[0]?.price_per_day || 15;
+      const extraUnit = extras[0]?.price_per_day || 12;
       const extraQty  = Math.max(0, guests - FREE_GUESTS);
       const extraUSD  = extraQty * extraUnit * noches;
       const totalUSD  = baseUSD + extraUSD;
-      const total     = moneda === 'USD' ? totalUSD : totalUSD * USD_TO_ARS;
-      const extra     = moneda === 'USD' ? extraUSD : extraUSD * USD_TO_ARS;
+
+      // 💰 NUEVO: Calculamos la tasa según la fecha de check-in
+      const fechaCheckin = new Date(startValue);
+      let factorARS = 1400;  // Default
+
+      if (fechaCheckin >= new Date('2025-05-01') && fechaCheckin <= new Date('2025-06-30')) {
+        factorARS = 1250;
+      } else if (fechaCheckin >= new Date('2025-07-01') && fechaCheckin <= new Date('2025-09-30')) {
+        factorARS = 1320;
+      }
+
+      const total = moneda === 'USD' ? totalUSD : totalUSD * factorARS;
+      const extra = moneda === 'USD' ? extraUSD : extraUSD * factorARS;
 
       let html = `<ul class="booking-summary">
         <li>Noches: ${noches}</li>
@@ -386,13 +395,13 @@ localStorage.removeItem("huespedes");
     }
   }
 
-  // ▶️ Al cargar, fijamos moneda si ya hay una fecha
   if (startInput.value) {
     handleCurrencyRules(startInput.value);
   } else {
     calculate();
   }
 </script>
+
   
 </body>
 </html>

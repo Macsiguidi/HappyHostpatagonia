@@ -201,199 +201,207 @@
 
 
 <script>
-  const USD_TO_ARS = 1400;
   const HOUSE_ID = 601712;
   const ROOM_ID  = 668503; // 👈 Ahora definido acá
 
-  const params = new URLSearchParams(window.location.search);
-  const checkin   = params.get("checkin");
-  const checkout  = params.get("checkout");
-  const huespedes = params.get("huespedes");
+const params = new URLSearchParams(window.location.search);
+    const checkin   = params.get("checkin");
+    const checkout  = params.get("checkout");
+    const huespedes = params.get("huespedes");
 
-  // 👇 Limpieza de localStorage después de usarlos
-localStorage.removeItem("checkin");
-localStorage.removeItem("checkout");
-localStorage.removeItem("huespedes");
+    // 👇 Limpieza de localStorage después de usarlos
+    localStorage.removeItem("checkin");
+    localStorage.removeItem("checkout");
+    localStorage.removeItem("huespedes");
 
-  const startInput  = document.getElementById('start');
-  const endInput    = document.getElementById('end');
-  const guestsInput = document.getElementById('guests');
-  const currSelect  = document.getElementById('currency');
-  const resDiv      = document.getElementById('resultado');
-  const reservarBtn = document.getElementById('btnReservar');
+    const startInput  = document.getElementById('start');
+    const endInput    = document.getElementById('end');
+    const guestsInput = document.getElementById('guests');
+    const currSelect  = document.getElementById('currency');
+    const resDiv      = document.getElementById('resultado');
+    const reservarBtn = document.getElementById('btnReservar');
 
-  if (checkin)   startInput.value  = checkin;
-  if (checkout)  endInput.value    = checkout;
-  if (huespedes) guestsInput.value = huespedes;
+    if (checkin)   startInput.value  = checkin;
+    if (checkout)  endInput.value    = checkout;
+    if (huespedes) guestsInput.value = huespedes;
 
-  const startPicker = flatpickr(startInput, {
-    altInput:   true,
-    altFormat:  'd/m/Y',
-    dateFormat: 'Y-m-d',
-    defaultDate: checkin || null,
-    onChange:   () => handleCurrencyRules(startInput.value)
-  });
+    const startPicker = flatpickr(startInput, {
+      altInput:   true,
+      altFormat:  'd/m/Y',
+      dateFormat: 'Y-m-d',
+      defaultDate: checkin || null,
+      onChange:   () => handleCurrencyRules(startInput.value)
+    });
 
-  const endPicker = flatpickr(endInput, {
-    altInput:   true,
-    altFormat:  'd/m/Y',
-    dateFormat: 'Y-m-d',
-    defaultDate: checkout || null,
-    onChange:   calculate
-  });
+    const endPicker = flatpickr(endInput, {
+      altInput:   true,
+      altFormat:  'd/m/Y',
+      dateFormat: 'Y-m-d',
+      defaultDate: checkout || null,
+      onChange:   calculate
+    });
 
-  startPicker.config.onChange.push((selectedDates) => {
-    if (selectedDates[0]) {
-      endPicker.setDate(null);
-      endPicker.jumpToDate(selectedDates[0]);
-      endPicker.open();
-    }
-  });
+    startPicker.config.onChange.push((selectedDates) => {
+      if (selectedDates[0]) {
+        endPicker.setDate(null);
+        endPicker.jumpToDate(selectedDates[0]);
+        endPicker.open();
+      }
+    });
 
-  async function loadDisabledDates(picker) {
-    try {
-      const resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate6');
-
-      if (!resp.ok) throw new Error(await resp.text());
-      const rangos = await resp.json();
-      picker.set('disable', rangos.map(r => ({ from: r.from, to: r.to })));
-    } catch (e) {
-      console.error('No se pudieron cargar fechas ocupadas:', e.message);
-    }
-  }
-
-  startPicker.config.onReady.push(()        => loadDisabledDates(startPicker));
-  startPicker.config.onMonthChange.push(() => loadDisabledDates(startPicker));
-  endPicker.config.onReady.push(()          => loadDisabledDates(endPicker));
-  endPicker.config.onMonthChange.push(()    => loadDisabledDates(endPicker));
-
-  guestsInput.addEventListener('input', calculate);
-  currSelect.addEventListener('change', calculate);
-
-  // ✅ MOSTRAR SOLO ARS antes del 01/08/2025 — editable
-  function handleCurrencyRules(fechaCheckin) {
-    const limite = new Date('2025-07-31'); //cambio de fechas para calcular el precio
-    const fecha  = new Date(fechaCheckin);
-
-    if (!fechaCheckin) {
-      currSelect.style.display = 'block';
-      currSelect.disabled = false;
-      return;
+    async function loadDisabledDates(picker) {
+      try {
+        const resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate6');
+        if (!resp.ok) throw new Error(await resp.text());
+        const rangos = await resp.json();
+        picker.set('disable', rangos.map(r => ({ from: r.from, to: r.to })));
+      } catch (e) {
+        console.error('No se pudieron cargar fechas ocupadas:', e.message);
+      }
     }
 
-    if (fecha <= limite) {
-      currSelect.value = 'ARS';
-      currSelect.style.display = 'none';
-      currSelect.disabled = true;
+    startPicker.config.onReady.push(()        => loadDisabledDates(startPicker));
+    startPicker.config.onMonthChange.push(() => loadDisabledDates(startPicker));
+    endPicker.config.onReady.push(()          => loadDisabledDates(endPicker));
+    endPicker.config.onMonthChange.push(()    => loadDisabledDates(endPicker));
+
+    guestsInput.addEventListener('input', calculate);
+    currSelect.addEventListener('change', calculate);
+
+    function handleCurrencyRules(fechaCheckin) {
+      const fecha  = new Date(fechaCheckin);
+      const limite = new Date('2025-09-30');
+
+      if (!fechaCheckin) {
+        currSelect.style.display = 'block';
+        currSelect.disabled = false;
+        return;
+      }
+
+      if (fecha <= limite) {
+        currSelect.value = 'ARS';
+        currSelect.style.display = 'none';
+        currSelect.disabled = true;
+      } else {
+        currSelect.value = 'USD';
+        currSelect.style.display = 'none';
+        currSelect.disabled = true;
+      }
+
+      calculate();
+    }
+
+    async function calculate() {
+      const startValue = startInput.value;
+      const endValue   = endInput.value;
+      const guests     = +guestsInput.value;
+      const moneda     = currSelect.value;
+
+      if (!startValue || !endValue) {
+        resDiv.textContent = 'Seleccioná ambas fechas.';
+        reservarBtn.disabled = true;
+        return;
+      }
+
+      const sd = new Date(startValue), ed = new Date(endValue);
+      if (ed <= sd) {
+        resDiv.textContent = 'La fecha de fin debe ser posterior a la de inicio.';
+        reservarBtn.disabled = true;
+        return;
+      }
+
+      const MAX_GUESTS = 6, FREE_GUESTS = 5;
+      if (guests > MAX_GUESTS) {
+        resDiv.textContent = `La capacidad máxima es de ${MAX_GUESTS} huéspedes.`;
+        reservarBtn.disabled = true;
+        return;
+      }
+
+      const noches = Math.round((ed - sd) / (1000 * 60 * 60 * 24));
+      resDiv.textContent = 'Cargando…';
+      reservarBtn.disabled = true;
+
+      try {
+        const url = `https://disponibilidad-happy-host-patagonia.onrender.com/api/precios-diarios?start=${startValue}&end=${endValue}&houseId=${HOUSE_ID}&roomId=${ROOM_ID}`;
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error(await resp.text());
+        const { dias = [], extras = [] } = await resp.json();
+
+        if (dias.length === 0) {
+          resDiv.textContent = 'No hay precios para estas fechas.';
+          return;
+        }
+
+        const minStay = dias
+          .map(d => Math.min(...d.prices.map(p => p.min_stay)))
+          .reduce((a, b) => Math.min(a, b), Infinity);
+
+        if (noches < minStay) {
+          resDiv.textContent = `La estadía mínima es de ${minStay} noches.`;
+          return;
+        }
+
+        let baseUSD = 0;
+        for (let i = 0; i < noches; i++) {
+          const d = dias[i];
+          const p = d.prices.find(x =>
+            noches >= x.min_stay && noches <= x.max_stay
+          ) || d.prices.reduce((a, b) => a.min_stay < b.min_stay ? a : b);
+          baseUSD += p.price_per_day;
+        }
+
+        const extraUnit = extras[0]?.price_per_day || 12;
+        const extraQty  = Math.max(0, guests - FREE_GUESTS);
+        const extraUSD  = extraQty * extraUnit * noches;
+        const totalUSD  = baseUSD + extraUSD;
+
+        // 💰 Factor dinámico para ARS
+        const fechaCheckin = new Date(startValue);
+        let factorARS = 1400;
+
+        if (fechaCheckin >= new Date('2025-05-01') && fechaCheckin <= new Date('2025-06-30')) {
+          factorARS = 1250;
+        } else if (fechaCheckin >= new Date('2025-07-01') && fechaCheckin <= new Date('2025-09-30')) {
+          factorARS = 1320;
+        }
+
+        const total = moneda === 'USD' ? totalUSD : totalUSD * factorARS;
+        const extra = moneda === 'USD' ? extraUSD : extraUSD * factorARS;
+
+        let html = `<ul class="booking-summary">
+          <li>Noches: ${noches}</li>
+          <li>Huéspedes: ${guests}</li>` +
+          (extraQty > 0 ? `<li>Extra huésped: ${extra.toLocaleString()} ${moneda}</li>` : '') +
+          `<li><strong>Total:</strong> ${total.toLocaleString()} ${moneda}</li>
+        </ul>`;
+        resDiv.innerHTML = html;
+
+        reservarBtn.disabled = false;
+        reservarBtn.onclick = () => {
+          const qs = new URLSearchParams({
+            propertyId:     HOUSE_ID,
+            roomTypeId:     ROOM_ID,
+            checkInDate:    startValue,
+            checkOutDate:   endValue,
+            numberOfGuests: guests,
+            totalPrice:     total,
+            currency:       moneda
+          }).toString();
+          window.location.href = `formulario.html?${qs}`;
+        };
+      } catch (e) {
+        console.error(e);
+        resDiv.textContent = 'Error al obtener datos: ' + e.message;
+      }
+    }
+
+    if (startInput.value) {
+      handleCurrencyRules(startInput.value);
     } else {
-      currSelect.value = 'USD';
-      currSelect.style.display = 'none';
-      currSelect.disabled = true;
+      calculate();
     }
-
-    calculate();
-  }
-
-  async function calculate() {
-    const startValue = startInput.value;
-    const endValue   = endInput.value;
-    const guests     = +guestsInput.value;
-    const moneda     = currSelect.value;
-
-    if (!startValue || !endValue) {
-      resDiv.textContent = 'Seleccioná ambas fechas.';
-      reservarBtn.disabled = true;
-      return;
-    }
-
-    const sd = new Date(startValue), ed = new Date(endValue);
-    if (ed <= sd) {
-      resDiv.textContent = 'La fecha de fin debe ser posterior a la de inicio.';
-      reservarBtn.disabled = true;
-      return;
-    }
-
-    const MAX_GUESTS = 6, FREE_GUESTS = 4;
-    if (guests > MAX_GUESTS) {
-      resDiv.textContent = `La capacidad máxima es de ${MAX_GUESTS} huéspedes.`;
-      reservarBtn.disabled = true;
-      return;
-    }
-
-    const noches = Math.round((ed - sd) / (1000 * 60 * 60 * 24));
-    resDiv.textContent = 'Cargando…';
-    reservarBtn.disabled = true;
-
-    try {
-      const url = `https://disponibilidad-happy-host-patagonia.onrender.com/api/precios-diarios?start=${startValue}&end=${endValue}&houseId=${HOUSE_ID}&roomId=${ROOM_ID}`;
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(await resp.text());
-      const { dias = [], extras = [] } = await resp.json();
-
-      if (dias.length === 0) {
-        resDiv.textContent = 'No hay precios para estas fechas.';
-        return;
-      }
-
-      const minStay = dias
-        .map(d => Math.min(...d.prices.map(p => p.min_stay)))
-        .reduce((a, b) => Math.min(a, b), Infinity);
-
-      if (noches < minStay) {
-        resDiv.textContent = `La estadía mínima es de ${minStay} noches.`;
-        return;
-      }
-
-      let baseUSD = 0;
-      for (let i = 0; i < noches; i++) {
-        const d = dias[i];
-        const p = d.prices.find(x =>
-          noches >= x.min_stay && noches <= x.max_stay
-        ) || d.prices.reduce((a, b) => a.min_stay < b.min_stay ? a : b);
-        baseUSD += p.price_per_day;
-      }
-
-      const extraUnit = extras[0]?.price_per_day || 15;
-      const extraQty  = Math.max(0, guests - FREE_GUESTS);
-      const extraUSD  = extraQty * extraUnit * noches;
-      const totalUSD  = baseUSD + extraUSD;
-      const total     = moneda === 'USD' ? totalUSD : totalUSD * USD_TO_ARS;
-      const extra     = moneda === 'USD' ? extraUSD : extraUSD * USD_TO_ARS;
-
-      let html = `<ul class="booking-summary">
-        <li>Noches: ${noches}</li>
-        <li>Huéspedes: ${guests}</li>` +
-        (extraQty > 0 ? `<li>Extra huésped: ${extra.toLocaleString()} ${moneda}</li>` : '') +
-        `<li><strong>Total:</strong> ${total.toLocaleString()} ${moneda}</li>
-      </ul>`;
-      resDiv.innerHTML = html;
-
-      reservarBtn.disabled = false;
-      reservarBtn.onclick = () => {
-        const qs = new URLSearchParams({
-          propertyId:     HOUSE_ID,
-          roomTypeId:     ROOM_ID,
-          checkInDate:    startValue,
-          checkOutDate:   endValue,
-          numberOfGuests: guests,
-          totalPrice:     total,
-          currency:       moneda
-        }).toString();
-        window.location.href = `formulario.html?${qs}`;
-      };
-    } catch (e) {
-      console.error(e);
-      resDiv.textContent = 'Error al obtener datos: ' + e.message;
-    }
-  }
-
-  // ▶️ Al cargar, fijamos moneda si ya hay una fecha
-  if (startInput.value) {
-    handleCurrencyRules(startInput.value);
-  } else {
-    calculate();
-  }
 </script>
+
 
 </body>
 </html>
