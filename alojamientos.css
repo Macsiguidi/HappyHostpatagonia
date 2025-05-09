@@ -14,7 +14,7 @@
   .hero-inicio {
     position: relative;
     height: 150vh; /* Subí un poco el alto para ver más fondo */
-    background: url('fondo/ChatGPT\ Image\ 1\ may\ 2025\,\ 06_32_17\ p.m..png') no-repeat center center / cover;
+    background: url('fondo/cordillera.jpeg') no-repeat center center / cover;
     background-position-y: -10vh; /* Podés ajustar a -15vh o -10vh según cómo se vea mejor */
     display: flex;
     flex-direction: column;

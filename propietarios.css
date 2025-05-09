@@ -13,8 +13,8 @@
   .hero-inicio {
     position: relative;
     height: 50vh;
-    background: url('fondo/ChatGPT\ Image\ 21\ abr\ 2025\,\ 11_47_46\ a.m..png') no-repeat center center / cover;
-    background-position: bottom ; /* Esto ya está bien */
+    background: url('fondo/kirill-burov-qJ98qNZkKbw-unsplash.jpg') no-repeat center center / cover;
+    background-position: center 80%; ; /* Esto ya está bien */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
