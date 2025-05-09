@@ -103,5 +103,25 @@ document.getElementById('formularioReserva').addEventListener('submit', async (e
   }
 });
 
+  // Modal abrir/cerrar
+  const modal      = document.getElementById("modal-terminos");
+  const abrirBtn   = document.getElementById("verTerminos");
+  const cerrarBtn  = document.querySelector(".cerrar");
+
+  abrirBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+  });
+
+  cerrarBtn.addEventListener("click", function() {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
 
 
