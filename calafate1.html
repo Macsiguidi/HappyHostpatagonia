@@ -83,8 +83,7 @@
       </div>
     </div>
 
-    <div class="reserva">
-  
+     <div class="reserva">
       <!-- Fechas en la misma línea -->
       <div class="dates">
         <div class="date-field" id="df-start">
@@ -106,9 +105,16 @@
       </div>
     
       <!-- Huéspedes -->
-      <label for="guests">Huéspedes</label>
-      <input type="number" id="guests" value="1" min="1" max="6">
+      <!-- Oculto para que el script siga funcionando -->
+      <input type="hidden" id="guests" value="1" />
 
+       <!-- Control visual para huéspedes -->
+        <div class="huespedes-control">
+           <button id="menos">−</button>
+           <span id="contador">1 huésped</span>
+           <button id="mas">+</button>
+        </div>
+    
       <!-- Selección de moneda -->
       <label for="currency" style="display:none;">Moneda</label>
       <select id="currency" style="display:none;">
@@ -121,6 +127,7 @@
     
       <!-- Resumen debajo -->
       <div id="resultado"></div>
+  
     </div>
   </section>
 
@@ -156,7 +163,8 @@
     </div>
   </section>
 </div>
-<script>
+
+  <script>
 
     const scrollContainer = document.getElementById('miniaturas-scroll');
     const flechaIzq = document.querySelector('.flecha.izq');
@@ -200,44 +208,68 @@
   </script>
 
 <script>
-  const HOUSE_ID   = 601552;
-  const ROOM_ID    = 668343;
+  const HOUSE_ID = 601552;
+  const ROOM_ID = 668343;
 
   const params = new URLSearchParams(window.location.search);
   const checkin   = params.get("checkin");
   const checkout  = params.get("checkout");
   const huespedes = params.get("huespedes");
 
-  // 👇 Limpieza de localStorage después de usarlos
+  // Limpieza de localStorage
   localStorage.removeItem("checkin");
   localStorage.removeItem("checkout");
   localStorage.removeItem("huespedes");
 
-  const startInput  = document.getElementById('start');
-  const endInput    = document.getElementById('end');
-  const guestsInput = document.getElementById('guests');
-  const currSelect  = document.getElementById('currency');
-  const resDiv      = document.getElementById('resultado');
-  const reservarBtn = document.getElementById('btnReservar');
+  const startInput    = document.getElementById('start');
+  const endInput      = document.getElementById('end');
+  const guestsInput   = document.getElementById('guests'); // oculto pero funcional
+  const currSelect    = document.getElementById('currency');
+  const resDiv        = document.getElementById('resultado');
+  const reservarBtn   = document.getElementById('btnReservar');
+  const menosBtn      = document.getElementById('menos');
+  const masBtn        = document.getElementById('mas');
+  const contador      = document.getElementById('contador');
 
-  if (checkin)   startInput.value  = checkin;
-  if (checkout)  endInput.value    = checkout;
-  if (huespedes) guestsInput.value = huespedes;
+  let cantidad = parseInt(huespedes) || 1;
+  guestsInput.value = cantidad;
+
+  function actualizarContador() {
+    contador.textContent = cantidad === 1 ? '1 huésped' : `${cantidad} huéspedes`;
+    guestsInput.value = cantidad;
+    calculate();
+  }
+
+  menosBtn.addEventListener('click', () => {
+    if (cantidad > 1) {
+      cantidad--;
+      actualizarContador();
+    }
+  });
+
+  masBtn.addEventListener('click', () => {
+    if (cantidad < 6) {
+      cantidad++;
+      actualizarContador();
+    }
+  });
 
   const startPicker = flatpickr(startInput, {
-    altInput:   true,
-    altFormat:  'd/m/Y',
+    altInput: true,
+    altFormat: 'd/m/Y',
     dateFormat: 'Y-m-d',
     defaultDate: checkin || null,
-    onChange:   () => handleCurrencyRules(startInput.value)
+    showMonths: 1,
+    onChange: () => handleCurrencyRules(startInput.value)
   });
 
   const endPicker = flatpickr(endInput, {
-    altInput:   true,
-    altFormat:  'd/m/Y',
+    altInput: true,
+    altFormat: 'd/m/Y',
     dateFormat: 'Y-m-d',
     defaultDate: checkout || null,
-    onChange:   calculate
+    showMonths: 1,
+    onChange: calculate
   });
 
   startPicker.config.onChange.push((selectedDates) => {
@@ -251,7 +283,6 @@
   async function loadDisabledDates(picker) {
     try {
       const resp = await fetch('https://disponibilidad-happy-host-patagonia.onrender.com/api/ocupados/calafate1');
-
       if (!resp.ok) throw new Error(await resp.text());
       const rangos = await resp.json();
       picker.set('disable', rangos.map(r => ({ from: r.from, to: r.to })));
@@ -265,7 +296,6 @@
   endPicker.config.onReady.push(()          => loadDisabledDates(endPicker));
   endPicker.config.onMonthChange.push(()    => loadDisabledDates(endPicker));
 
-  guestsInput.addEventListener('input', calculate);
   currSelect.addEventListener('change', calculate);
 
   function handleCurrencyRules(fechaCheckin) {
@@ -291,7 +321,7 @@
     calculate();
   }
 
-  async function calculate() {
+    async function calculate() {
     const startValue = startInput.value;
     const endValue   = endInput.value;
     const guests     = +guestsInput.value;
@@ -310,7 +340,7 @@
       return;
     }
 
-    const MAX_GUESTS = 6, FREE_GUESTS = 5;
+    const MAX_GUESTS = 6, FREE_GUESTS = 4;
     if (guests > MAX_GUESTS) {
       resDiv.textContent = `La capacidad máxima es de ${MAX_GUESTS} huéspedes.`;
       reservarBtn.disabled = true;
@@ -355,9 +385,9 @@
       const extraUSD  = extraQty * extraUnit * noches;
       const totalUSD  = baseUSD + extraUSD;
 
-      // 💰 NUEVO: Calculamos la tasa según la fecha de check-in
+      // 💰 Factor dinámico para ARS
       const fechaCheckin = new Date(startValue);
-      let factorARS = 1400;  // Default
+      let factorARS = 1400;
 
       if (fechaCheckin >= new Date('2025-05-01') && fechaCheckin <= new Date('2025-06-30')) {
         factorARS = 1250;
@@ -395,14 +425,20 @@
     }
   }
 
+  // Inicialización automática
   if (startInput.value) {
     handleCurrencyRules(startInput.value);
   } else {
     calculate();
   }
+
+  // Inicializa contador visual de huéspedes
+  actualizarContador();
 </script>
 
-  
+
+
+
 </body>
 </html>
 

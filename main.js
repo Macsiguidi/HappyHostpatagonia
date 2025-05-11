@@ -2,15 +2,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Inicializar Flatpickr
   const dateInput = document.getElementById("rango-fechas");
   if (dateInput) {
+    const isMobile = window.innerWidth <= 768;  // 👈 Detectamos si es mobile
+
     flatpickr(dateInput, {
       mode: "range",
       dateFormat: "Y-m-d",
       locale: "es",
       minDate: "today",
-      showMonths: 2,
+      showMonths: isMobile ? 1 : 2,  // 👈 MOSTRAR 1 EN MOBILE Y 2 EN DESKTOP
       disableMobile: true
     });
   }
+});
 
   // Selector de huéspedes
   const cantidadSpan = document.getElementById("cantidad");
