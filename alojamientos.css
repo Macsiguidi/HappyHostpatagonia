@@ -257,15 +257,15 @@
 /* ————— Menú hamburguesa ————— */
 .menu-toggle {
   display: none;
-  font-size: 1.8rem;
+  font-size: 14px;
   background: none;
   border: none;
   color: #1D292A;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1001;
 }
 .menu-principal {
-  position: relative;
+  position: fixed;
 }
 .menu-principal ul {
   display: flex;
@@ -306,7 +306,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #1D292A;
     z-index: 1000;
     padding-left: 4rem;
   }
