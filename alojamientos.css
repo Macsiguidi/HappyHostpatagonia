@@ -295,7 +295,7 @@
 
   .hero-inicio {
     position: relative;
-    height: 150vh;
+    height: 50vh;
     background: url('fondo/IMG-20250509-WA0006.jpg') no-repeat center center / cover;
     background-position-y: -10vh;
   }

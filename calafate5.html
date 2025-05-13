@@ -240,6 +240,7 @@ const startPicker = flatpickr(startInput, {
   dateFormat: 'Y-m-d',
   defaultDate: checkin || null,
   minDate: hoy,
+  disableMobile: true,  // 👈 agregá esto
   onChange: () => handleCurrencyRules(startInput.value)
 });
 
@@ -249,6 +250,7 @@ const endPicker = flatpickr(endInput, {
   dateFormat: 'Y-m-d',
   defaultDate: checkout || null,
   minDate: hoy,
+  disableMobile: true,  // 👈 agregá esto
   onChange: calculate
 });
 
