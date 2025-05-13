@@ -360,7 +360,7 @@
   }
   .menu-principal ul.open li:nth-child(3) { display: none; }
   .menu-principal ul.open li a {
-    font-size: 1.4rem;
+    font-size: 10px;
     color: #1D292A;
   }
   .mobile-logo {

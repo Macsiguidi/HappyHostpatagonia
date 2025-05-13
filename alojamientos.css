@@ -315,7 +315,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 9999 !important;
     padding-left: 4rem;
   }
 
@@ -328,7 +328,7 @@
     color: #fff4d4;
     background: none;
     border: none;
-    z-index: 1002;
+    z-index: 10000 !important;
   }
 
   .menu-principal ul {
@@ -336,18 +336,18 @@
   }
 
   .menu-principal ul.open {
-  display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* 👈 Cambiado */
-  padding-top: 7rem;           /* 👈 Ajustás cuánto querés separarlo del top */
-  position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.95);
-  gap: 1.5rem;
-  margin: 0;
-  list-style: none;
-  z-index: 1001;
+   display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.95);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 9999 !important;
 }
 
   .menu-principal ul.open li:nth-child(3) { display: none; }
@@ -363,7 +363,7 @@
     left: 1rem;
     width: 60px;
     height: auto;
-    z-index: 1003;
+    z-index: 10000 !important;
   }
 
   /* Tarjetas más chicas */
@@ -371,7 +371,7 @@
     flex-direction: column !important;
     align-items: center !important;
     padding: 20px 10px !important;
-    z-index: 1;
+    z-index: auto !important;
     position: relative;
   }
 
@@ -379,15 +379,25 @@
     width: 90% !important;
     max-width: 350px;
     height: 350px !important;
+    z-index: auto !important;
   }
 
   .carousel {
     height: 220px !important;
+    z-index: auto !important;
   }
 
   .carousel img.slide {
     height: 220px !important;
+    z-index: auto !important;
   }
+
+  .prev,
+  .next {
+    z-index: auto !important; /* 👈 Los manda bien atrás */
+    position: relative;    /* 👈 Asegura que el z-index funcione */
+  }
+
 
   /* Footer móvil igual que index */
   .footer-content {
