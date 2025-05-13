@@ -7,7 +7,7 @@
   }
   
   body {
-    background-color: #6c635e;
+    background-color: #D3C3B9;
     color: #161616;
   }
   
@@ -296,7 +296,7 @@
   .hero-inicio {
     position: relative;
     height: 50vh;
-    background: url('fondo/IMG-20250509-WA0006.jpg') no-repeat center center / cover;
+    background: url('fondo/juan-pablo-mascanfroni-Cjdsqve-6Ls-unsplash.jpg') no-repeat center center / cover;
     background-position-y: -10vh;
   }
 
@@ -363,7 +363,6 @@
     flex-direction: column !important;
     align-items: center !important;
     padding: 20px 10px !important;
-    margin-top: -600px !important;
     z-index: 1;
     position: relative;
   }
