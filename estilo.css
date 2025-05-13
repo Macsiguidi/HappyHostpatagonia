@@ -740,11 +740,11 @@ body {
   .video-texto h2 {
     font-size: 1.8rem !important;
     margin-bottom: 0.5rem;
-    color: #D3C3B9;
+    color: #ffffff;
   }
   .video-texto p {
     font-size: 1rem !important;
-    color: #3D4D55;
+    color: #ffffff;
   }
   .video-thumbnails {
     display: grid !important;
@@ -756,7 +756,7 @@ body {
   /* Asegura que el fondo llene todo el alto disponible */
   background-size: cover !important;
   background-position: center center !important;
-  background-image: url('fondo/ChatGPT\ Image\ 1\ may\ 2025\,\ 06_32_17\ p.m..png') !important;
+  background-image: url('fondo/IMG-20250509-WA0003.jpg') !important;
   /* Reducimos un poco el padding vertical
      para que no se corte antes del footer */
   padding: 100px 0 !important;

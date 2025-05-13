@@ -10,6 +10,12 @@
     background-color: #D3C3B9;
     color: #161616;
   }
+
+  body.menu-abierto {
+  overflow: hidden;
+  height: 100vh;
+}
+
   
   .hero-inicio {
     position: relative;
@@ -305,7 +311,7 @@
 
   /* Menú móvil */
   .menu-principal {
-    position: fixed; /* 👈 cambio importante */
+    position: relative; /* 👈 cambio importante */
     top: 0;
     left: 0;
     width: 100%;

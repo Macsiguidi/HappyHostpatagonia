@@ -364,6 +364,15 @@
 </script>  
 
 <script>
+  document.querySelector('.menu-toggle').addEventListener('click', () => {
+  const ul = document.querySelector('.menu-principal ul');
+  ul.classList.toggle('open');
+  document.body.classList.toggle('menu-abierto');
+});
+
+</script>
+
+<script>
   document.addEventListener('DOMContentLoaded', async () => {
     // 1) Cargo filtros guardados
     const checkin   = localStorage.getItem('checkin');
@@ -425,21 +434,6 @@
     }
   });
 </script>
-
-
-
-
-<script>
-  // Mostrar/ocultar menú hamburguesa
-  const toggleBtn = document.querySelector(".menu-toggle");
-const menuList = document.querySelector(".menu-principal ul");
-
-toggleBtn.addEventListener("click", () => {
-  menuList.classList.toggle("open");
-});
-</script>
-
-
 
 <script>
   function redirigirConParametros(pagina) {
