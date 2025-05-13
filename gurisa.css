@@ -1,7 +1,5 @@
-/* ==== IMPORTS: Flatpickr base + tema ==== */
 @import url("https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css");
 
-/* ==== Variables de color y tipografía ==== */
 :root {
   --fondo-claro: #F7F7F7;
   --marron: #B58863;
@@ -9,7 +7,6 @@
   --negro: #161616;
 }
 
-/* ==== Estilos generales del sitio ==== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -110,7 +107,6 @@ body {
 .miniaturas::-webkit-scrollbar {
   display: none;
 }
-
 .miniaturas img {
   width: 80px;
   height: 60px;
@@ -144,10 +140,21 @@ body {
   background-color: #A07956;
 }
 
+.info.servicios {
+  background-color: #3D4D55;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 0 0 00px;
+  width: 95%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  color: antiquewhite;
+}
+
 .iconos-servicios {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  gap: 30px;
   justify-content: flex-start;
   margin-top: 10px;
 }
@@ -156,9 +163,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90px;
+  width: 80px;
   text-align: center;
-  font-size: 14px;
+  font-size: 10px;
   color: antiquewhite;
   gap: 10px;
 }
@@ -226,81 +233,58 @@ body {
   height: 40px;
   border-radius: 50%;
 }
-
-.selector-fechas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-/* ==== Widget de Reserva – Happy Host Patagonia ==== */
+/* ==== NUEVO Motor de Reserva ==== */
 .reserva {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  padding: 16px 16px 8px;
-  max-width: 300px;
-  height: 350px;
+  padding: 16px;
+  width: 350px;
+  height: 400px;
   margin: 0 auto;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--gris-oscuro);
-}
-
-.reserva .dates {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.reserva .date-field {
-  flex: 1;
-}
-
-.reserva .date-field input {
-  width: 100%;
-  padding: 8px;
-  height: 36px;
-  font-size: 0.9rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: #f9f9f9;
+  flex-direction: column;
+  gap: 12px;
   box-sizing: border-box;
 }
 
-.reserva label[for="guests"],
-.reserva label[for="currency"] {
-  display: block;
-  margin-top: 8px;
+.reserva label {
+  text-align: center;
+  font-weight: 500;
   margin-bottom: 4px;
-  font-size: 0.8rem;
-  color: var(--gris-oscuro);
+  display: block;
+  font-size: 0.95rem;
 }
 
-.reserva input#guests,
-.reserva select#currency {
+.reserva input[type="text"],
+.reserva input[type="number"],
+.reserva select {
   width: 100%;
-  padding: 8px;
-  font-size: 0.9rem;
+  padding: 10px;
+  font-size: 0.95rem;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  background: #f9f9f9;
+  border-radius: 12px;
+  background-color: #fff;
   box-sizing: border-box;
 }
 
 #btnReservar {
-  width: 100%;
-  padding: 10px;
-  margin-top: 12px;
-  margin-bottom: 8px;
-  background: var(--marron);
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: bold;
+  background: #b58863;
   border: none;
-  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 12px;
   cursor: pointer;
+  width: 100%;
   transition: background 0.3s;
+}
+
+#btnReservar:hover:enabled {
+  background-color: #a07654;
 }
 
 #btnReservar:disabled {
@@ -308,12 +292,9 @@ body {
   cursor: not-allowed;
 }
 
-#btnReservar:not(:disabled):hover {
-  background: var(--negro);
-}
-
 #resultado {
   margin-top: 8px;
+  font-size: 0.95rem;
 }
 
 .booking-summary {
@@ -333,146 +314,149 @@ body {
   font-weight: bold;
 }
 
-
-/* ========================
-   Estilo personalizado Flatpickr
-   ======================== */
-
-   .flatpickr-calendar {
-    font-family: 'Poppins', sans-serif;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    border: none;
-    overflow: hidden;
-  }
-  
-  .flatpickr-months {
-    background-color: #B58863;
-    color: white;
-    padding: 10px 0;
-    border-radius: 12px 12px 0 0;
-  }
-  
-  .flatpickr-months .flatpickr-prev-month,
-  .flatpickr-months .flatpickr-next-month {
-    color: white;
-    font-size: 16px;
-  }
-  
-  .flatpickr-monthDropdown-months,
-  .flatpickr-current-month input.cur-year {
-    background: transparent;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  
-  .flatpickr-weekdays {
-    background-color: #5f7783;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .flatpickr-weekday {
-    font-size: 13px;
-    padding: 8px 0;
-  }
-  
-  .flatpickr-day {
-    font-size: 14px;
-    border-radius: 6px;
-    padding: 6px 0;
-    transition: background 0.2s ease;
-  }
-  
-  .flatpickr-day:hover {
-    background: #D3C3B9;
-    color: #161616;
-  }
-  
-  .flatpickr-day.selected {
-    background-color: #B58863;
-    color: white;
-  }
-  
-  .flatpickr-day.disabled {
-    color: #ccc;
-    text-decoration: line-through;
-    cursor: not-allowed;
-    background: transparent;
-  }
-  
-  /* ANIMACIÓN suave para selección */
-.flatpickr-day {
-  transition: background 0.25s ease, color 0.25s ease;
+/* huespedes */
+.huespedes-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 4px;
 }
 
-/* Día actual (hoy) */
-.flatpickr-day.today {
-  border: 1px solid #B58863 !important;
+.huespedes-control button {
+  background-color: #b58863;
+  border: none;
+  color: white;
+  font-size: 20px;
   font-weight: bold;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* Día seleccionado con efecto más "fuerte" */
+.huespedes-control button:hover {
+  background-color: #a07654;
+}
+
+#contador {
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  flex: 1;
+}
+
+/* ==== Flatpickr personalizado ==== */
+.flatpickr-calendar {
+  width: auto !important;
+  min-width: 300px;
+  max-width: 90vw;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 15px;
+}
+
+.flatpickr-weekdays {
+  display: none !important;
+}
+
+.flatpickr-days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 4px;
+}
+
+.flatpickr-day {
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  color: #3D4D55;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.flatpickr-day.today {
+  border: 1px solid #B58863;
+  background: transparent;
+}
+
 .flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange {
-  background: #B58863 !important;
-  color: #fff !important;
-  box-shadow: 0 0 0 2px #B58863 inset !important;
-  font-weight: bold;
+  background: none !important;
+  border: 2px solid #B58863 !important;
+  color: #3D4D55 !important;
 }
 
-/* Hover en días seleccionables */
 .flatpickr-day:not(.disabled):hover {
-  background-color: #D3C3B9 !important;
-  color: #1D292A !important;
-  transform: scale(1.05);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background-color: rgba(181, 136, 99, 0.15) !important;
+  color: #3D4D55 !important;
   cursor: pointer;
 }
 
-/* Animación de aparición del calendario */
-.flatpickr-calendar {
-  animation: fadeIn 0.3s ease-out;
+.flatpickr-day.disabled {
+  color: #ccc !important;
+  text-decoration: line-through !important;
+  cursor: not-allowed !important;
+  opacity: 0.8;
+}
+.flatpickr-current-month input.cur-year {
+  font-size: 1rem !important;
+  font-weight: bold;
+  width: 80px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.flatpickr-months .flatpickr-month {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
 }
 
+/* Mostrar solo servicios escritorio por defecto */
+.info.servicios {
+  display: block;
+}
+.info.servicios-movil {
+  display: none;
+}
+
+/* === Vista móvil === */
 @media (max-width: 768px) {
-  /* ===== HEADER ===== */
+  .detalle-alojamiento {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imagen-principal     { order: 1; }
+  .reserva              { order: 2; }
+  .info.servicios-movil { order: 3; }
+
   .header .barra-menu {
     padding: 0.5rem 1rem !important;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    background-color: rgba(61, 77, 85, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     margin-bottom: 1.5rem !important;
   }
 
   .logo img {
     height: 50px;
-    width: auto;
     object-fit: contain;
   }
 
   .titulo-header {
     display: none;
-  }
-
-  .volver {
-    margin-left: auto;
   }
 
   .boton-volver {
@@ -481,109 +465,133 @@ body {
     white-space: nowrap;
   }
 
-  
-}
-  @media (max-width: 768px) {
-    .fondo-blur {
-      padding: 0 !important;
-      margin: 0 auto !important;
-    }
-  
-    .detalle-alojamiento {
-      align-items: center;
-      padding: 0 !important;
-      gap: 2rem;
-    }
-    .detalle-alojamiento {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .imagen-principal {
-      order: 1;
-      margin-top: 1.5rem !important;
-    }
-  
-    .reserva {
-      order: 2;
-    }
-  
-    .servicios {
-      order: 3;
-    }
- 
-    .imagen-principal,
-    .info.servicios,
-    .reserva,
-    .contenido-info .descripcion,
-    .contenido-info .mapa {
-      width: 90% !important;
-      max-width: 500px;
-      margin: 0 auto !important;
-      box-sizing: border-box;
-      gap: 2rem;
-    }
-  
-    .miniaturas-container {
-      justify-content: center !important;
-      align-items: center !important;;
-    }
-  
-    .contenido-info {
-      flex-direction: column !important;
-      align-items: center !important;
-      padding: 0 !important;
-      gap: 2rem;
-    }
-  
-    .info {
-      width: 100% !important;
-      box-sizing: border-box;
-    }
-  
-    .reserva {
-      padding: 1.5rem !important;
-      height: 380px;
-    }
-  
-    .miniaturas-container {
-      justify-content: center !important;
-      width: 100% !important;
-    }
-  
-    .iconos-servicios {
-      justify-content: center !important;
-      gap: 1rem;
-    }
-  
-    .iconos-servicios div {
-      width: 30%;
-      text-align: center;
-    }
-  
-    iframe {
-      width: 100% !important;
-      border-radius: 12px;
-    }
- 
+  .fondo-blur {
+    padding: 0 !important;
+    margin: 0 auto !important;
   }
-  
 
-/* ——— Por defecto (escritorio) ——— */
-.info.servicios {
-  display: block !important;
-}
-.info.servicios-movil {
-  display: none !important;
+  .detalle-alojamiento {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 !important;
+  }
+
+  .imagen-principal,
+  .info.servicios,
+  .reserva,
+  .contenido-info .descripcion,
+  .contenido-info .mapa {
+    width: 90% !important;
+    max-width: 500px;
+    margin: 0 auto !important;
+    box-sizing: border-box;
+  }
+
+  .miniaturas-container {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .flecha {
+    background: none !important;
+    color: var(--marron);
+    border: none;
+    font-size: 1.6rem;
+    padding: 0.2rem 0.6rem;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .contenido-info {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 !important;
+    gap: 2rem;
+  }
+
+  .info {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .reserva {
+    padding: 1.5rem !important;
+    height: auto;
+  }
+
+  .reserva input,
+  .reserva select,
+  .reserva label {
+    font-size: 1rem !important;
+  }
+
+  .huespedes-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 6px;
+  }
+
+  .huespedes-control button {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #b58863;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .huespedes-control button:hover {
+    color: #a07654;
+  }
+
+  #contador {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    flex: 1;
+  }
+
+  .iconos-servicios {
+    justify-content: center !important;
+    gap: 1rem;
+  }
+
+  .iconos-servicios div {
+    width: 30%;
+    text-align: center;
+  }
+
+  iframe {
+    width: 100% !important;
+    border-radius: 12px;
+  }
+
+  .flatpickr-calendar {
+    width: 85vw !important;
+    font-size: 0.9rem !important;
+  }
 }
 
-/* ——— Sólo en pantallas ≤ 768px ——— */
+/* Mostrar solo servicios versión mobile */
 @media (max-width: 768px) {
-
-  /* ocultar escritorio, mostrar móvil */
   .info.servicios {
     display: none !important;
   }
+
   .info.servicios-movil {
     display: flex !important;
     flex-direction: column;
@@ -591,88 +599,19 @@ body {
     width: 90%;
     max-width: 500px;
     margin: 1rem auto;
+    padding: 20px !important;
     box-sizing: border-box;
   }
 
-  /* reordenar dentro de detalle-alojamiento */
-  .detalle-alojamiento {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 0 !important;
-  }
-  .imagen-principal     { order: 1; }
-  .reserva              { order: 2; }
-  .info.servicios-movil { order: 3; }
-}
-
-@media (max-width: 768px) {
-  /* ocultar el bloque de servicios de escritorio */
   .detalle-alojamiento .info.servicios {
     display: none !important;
   }
 
-  /* mostrar y dar ancho idéntico al de la descripción */
   .detalle-alojamiento .info.servicios-movil {
     display: block !important;
-    width: 90% !important;         /* mismo width que tu .descripcion */
-    max-width: 500px !important;    /* igual que .descripcion */
-    margin: 0 auto !important;      /* centrar */
-    box-sizing: border-box !important; /* para incluir padding en ese ancho */
-    padding: 20px !important;       /* o el padding que necesites */
-    margin-bottom: 2rem !important; /* espacio extra debajo */
+    margin-bottom: 2rem !important;
   }
 }
 
-/* ===== Tipografía del formulario de reserva ===== */
-.reserva,
-.reserva * {
-  font-family: 'Poppins', sans-serif;
-  color: #3D4D55;
-}
 
-/* Inputs de fechas y huéspedes */
-.reserva input[type="text"],
-.reserva input[type="number"] {
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: 1px solid #DDD;
-}
 
-/* Label de Huéspedes */
-.reserva label[for="guests"] {
-  display: block;
-  margin: 0.5rem 0 0.25rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-/* Botón */
-#btnReservar {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #B58863;
-  color: white;
-  padding: 0.75rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-#btnReservar:hover {
-  background-color: #A07654;
-}
-
-/* Texto de resumen (noches, total, etc.) */
-#resultado {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-#resultado ul.booking-summary li {
-  margin-bottom: 0.25rem;
-}

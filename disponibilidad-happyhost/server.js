@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 const API_KEY  = 'tQF5BDMXbeN/vkKMRZiWKwM461gD8wL16EtUbwboi1OayWd3VZ24FMNKAuCF+3+m';
 const BASE_URL = 'https://api.lodgify.com';
 const cache    = {};
-const CACHE_TTL_MS = 1000 * 60 * 3; // 3 minutos de duración del cache
+const CACHE_TTL_MS = 1000 * 60 * 3; // 3 minutos
 
 const propiedades = {
   601552: 'Calafate 1',
@@ -28,44 +28,33 @@ const propiedades = {
 app.use(cors());
 app.use(express.json());
 
-/** PRECIOS DIARIOS */
+// Endpoint para precios diarios
 app.get('/api/precios-diarios', async (req, res) => {
   const { start, end, houseId, roomId } = req.query;
   if (!start || !end || !houseId || !roomId) {
-    return res.status(400).json({
-      success: false,
-      message: 'FALTAN start/end/houseId/roomId'
-    });
+    return res.status(400).json({ success: false, message: 'Faltan parámetros' });
   }
+
   try {
-    const lodgifyRes = await axios.get(
-      `${BASE_URL}/v1/rates/calendar`,
-      {
-        headers: { 'X-ApiKey': API_KEY, Accept: 'application/json' },
-        params: {
-          HouseId:    houseId,
-          RoomTypeId: roomId,
-          startDate:  start,
-          endDate:    end
-        }
-      }
-    );
+    const lodgifyRes = await axios.get(`${BASE_URL}/v1/rates/calendar`, {
+      headers: { 'X-ApiKey': API_KEY, Accept: 'application/json' },
+      params: { HouseId: houseId, RoomTypeId: roomId, startDate: start, endDate: end }
+    });
+
     const raw    = lodgifyRes.data;
     const dias   = Array.isArray(raw) ? raw : raw.dailyRates || [];
     const extras = Array.isArray(raw)
-      ? (raw.guest_based_prices  || raw.guestBasedPrices  || [])
-      : (raw.guest_based_prices  || raw.guestBasedPrices  || []);
+      ? (raw.guest_based_prices || raw.guestBasedPrices || [])
+      : (raw.guest_based_prices || raw.guestBasedPrices || []);
+
     res.json({ dias, extras });
   } catch (e) {
     console.error('⛔ precios-diarios:', e.response?.data || e.message);
-    res.status(500).json({
-      success: false,
-      message: 'Error al consultar precios diarios.'
-    });
+    res.status(500).json({ success: false, message: 'Error al consultar precios diarios.' });
   }
 });
 
-/** ARCHIVOS .ICS */
+// URLs de calendarios
 const icsUrls = {
   calafate1: 'https://www.lodgify.com/c5ff6e9d-c94a-4a0f-9633-511c8069d3d7.ics',
   calafate2: 'https://www.lodgify.com/4c434567-54bf-460c-84dc-afd111b90f76.ics',
@@ -76,11 +65,11 @@ const icsUrls = {
   calafate7: 'https://www.lodgify.com/b8419f93-3be3-42f0-87dc-b8ad622de155.ics',
   cruzdelsur4: 'https://www.lodgify.com/6b8f84da-cbd7-43aa-83c1-3fa6e19f7132.ics',
   cruzdelsur5: 'https://www.lodgify.com/ed954054-39e2-4193-b06b-dc2013fed6b5.ics',
-  nilidas: 'https://www.lodgify.com/62265ea3-79f4-4ead-ac12-95ed3266c6fb.ics',
-  gurisa: 'https://www.lodgify.com/255b2a6d-26ce-469f-8d84-58443c3f361f.ics',
-  paisajismo: 'https://www.lodgify.com/bd2720b5-ee80-4173-96bf-5fb5aafb84d1.ics',
+  nilidas:     'https://www.lodgify.com/62265ea3-79f4-4ead-ac12-95ed3266c6fb.ics',
+  gurisa:      'https://www.lodgify.com/255b2a6d-26ce-469f-8d84-58443c3f361f.ics',
+  paisajismo:  'https://www.lodgify.com/bd2720b5-ee80-4173-96bf-5fb5aafb84d1.ics'
 };
-
+// Endpoint de ocupados desde .ics
 app.get('/api/ocupados/:casa', async (req, res) => {
   const nombre = req.params.casa;
   const url = icsUrls[nombre];
@@ -90,20 +79,42 @@ app.get('/api/ocupados/:casa', async (req, res) => {
   }
 
   try {
+    // Si está cacheado, devolvemos rápido
+    if (cache[nombre] && (Date.now() - cache[nombre].timestamp < CACHE_TTL_MS)) {
+      return res.json(cache[nombre].data);
+    }
+
     const data = await ical.fromURL(url);
+    const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+
     const eventos = Object.values(data)
-      .filter(ev => ev.type === 'VEVENT')
-      .map(ev => {
-        const startDate = new Date(ev.start);
-        startDate.setDate(startDate.getDate() + 1);
-        const from = startDate.toISOString().split('T')[0];
+  .filter(ev => ev.type === 'VEVENT')
+  .map(ev => {
+    const inicio = new Date(ev.start);
+    const fin    = new Date(ev.end);
+    if (fin < hoy) return null; // ⛔ Ignoramos eventos que ya pasaron
 
-        const endDate = new Date(ev.end);
-        endDate.setDate(endDate.getDate() - 1);
-        const to = endDate.toISOString().split('T')[0];
+    const desde = new Date(inicio);
+    desde.setDate(desde.getDate() + 1);
+    const from = desde.toISOString().split('T')[0];
 
-        return { from, to };
-      });
+    const hasta = new Date(fin);
+    hasta.setDate(hasta.getDate() - 1);
+    const to = hasta.toISOString().split('T')[0];
+
+    console.log('⏳ Evento leído:', ev.summary, '→', from, 'a', to);
+
+    return { from, to };
+  })
+  .filter(Boolean);
+
+
+    // Guardamos en cache
+    cache[nombre] = {
+      data: eventos,
+      timestamp: Date.now()
+    };
+
     res.json(eventos);
   } catch (err) {
     console.error('⛔ Error al cargar el .ics:', err.message);
@@ -111,7 +122,7 @@ app.get('/api/ocupados/:casa', async (req, res) => {
   }
 });
 
-/** DISPONIBILIDAD */
+// Chequear alojamientos disponibles
 app.get('/api/disponibles', async (req, res) => {
   const { checkin, checkout } = req.query;
 
@@ -127,8 +138,10 @@ app.get('/api/disponibles', async (req, res) => {
   }
 
   const fechasBuscadas = [];
-  for (let d = new Date(checkin); d < new Date(checkout); d.setDate(d.getDate() + 1)) {
-    fechasBuscadas.push(new Date(d).toISOString().split('T')[0]);
+  const dInicio = new Date(checkin);
+  const dFin    = new Date(checkout);
+  for (let d = new Date(dInicio); d < dFin; d.setDate(d.getDate() + 1)) {
+    fechasBuscadas.push(d.toISOString().split('T')[0]);
   }
 
   const disponibles = [];
@@ -136,15 +149,18 @@ app.get('/api/disponibles', async (req, res) => {
   for (const [nombre, url] of Object.entries(icsUrls)) {
     try {
       const data = await ical.fromURL(url);
+      const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+
       const ocupadas = [];
 
       for (const ev of Object.values(data)) {
-        if (ev.type === 'VEVENT') {
-          const inicio = new Date(ev.start);
-          const fin = new Date(ev.end);
-          for (let d = new Date(inicio); d < fin; d.setDate(d.getDate() + 1)) {
-            ocupadas.push(d.toISOString().split('T')[0]);
-          }
+        if (ev.type !== 'VEVENT') continue;
+        const inicio = new Date(ev.start);
+        const fin    = new Date(ev.end);
+        if (fin < hoy) continue;
+
+        for (let d = new Date(inicio); d < fin; d.setDate(d.getDate() + 1)) {
+          ocupadas.push(d.toISOString().split('T')[0]);
         }
       }
 
@@ -164,20 +180,12 @@ app.get('/api/disponibles', async (req, res) => {
   res.json({ disponibles });
 });
 
-/** CREAR RESERVA */
-/** ENVIAR RESERVA POR MAIL */
+// Enviar reserva por mail
 app.post('/enviar-reserva', async (req, res) => {
   const {
-    nombre,
-    email,
-    telefono,
-    comentarios,
-    propertyId,
-    roomTypeId,
-    checkInDate,
-    checkOutDate,
-    numberOfGuests,
-    totalPrice
+    nombre, email, telefono, comentarios,
+    propertyId, roomTypeId, checkInDate,
+    checkOutDate, numberOfGuests, totalPrice
   } = req.body;
 
   const transporter = nodemailer.createTransport({
@@ -216,10 +224,11 @@ app.post('/enviar-reserva', async (req, res) => {
   }
 });
 
-
+// Iniciar server
 app.listen(PORT, () =>
   console.log(`⚡ Server corriendo en http://localhost:${PORT}`)
 );
+
 
 
 
