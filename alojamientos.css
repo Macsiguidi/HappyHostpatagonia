@@ -265,7 +265,7 @@
   z-index: 1001;
 }
 .menu-principal {
-  position: fixed;
+  position: relative;
 }
 .menu-principal ul {
   display: flex;
@@ -315,7 +315,7 @@
     top: 1rem;
     right: 1rem;
     display: block;
-    font-size: 1.8rem;
+    font-size: 14px;
     color: #fff4d4;
     background: none;
     border: none;
@@ -334,7 +334,7 @@
     position: fixed;
     inset: 0;
     background: rgba(255,255,255,0.95);
-    gap: 2rem;
+    gap: 1rem;
     margin: 0;
     padding: 0;
     list-style: none;
