@@ -367,9 +367,9 @@ body {
   position: relative;
   padding: 150px 60px;
   overflow: hidden;
-  background-image: url('fondo/615f520c52161.jpg');
+  background-image: url('fondo/lago\ y\ flores.jpg');
+  background-position: center; /* Podés ajustar a -15vh o -10vh según cómo se vea mejor */
   background-size: 100% auto; /* Asegura que la imagen cubra todo el contenedor */
-  background-position: center ; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que se repita */
 }
 
